@@ -1,13 +1,18 @@
-import React from "react"
-import { checkboxBrandData } from "../utils/data"
+import React from 'react'
+import { checkboxBrandData } from '../utils/data'
 
-const CheckboxBrand = ({ onBrandChange, accentColor }) => {
+type CheckboxBrandProps = {
+  onBrandChange: (value: any) => void
+  accentColor: string
+}
+
+const CheckboxBrand = ({ onBrandChange, accentColor }: CheckboxBrandProps) => {
   return (
-    <div className="py-4 border-b-2 border-gray-200">
+    <div className="border-b-2 border-gray-200 py-4">
       <h3>Brand</h3>
-      <div className="flex flex-col mt-2">
+      <div className="mt-2 flex flex-col">
         {checkboxBrandData.map((item, index) => (
-          <div key={index} className="text-sm space-x-2 flex items-center">
+          <div key={index} className="flex items-center space-x-2 text-sm">
             <input
               type="checkbox"
               id={item.name}

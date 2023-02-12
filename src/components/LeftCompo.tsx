@@ -1,19 +1,23 @@
-import React from "react";
-import { MdDelete, MdShoppingCart } from "react-icons/md";
-import Image from "next/image";
-import { RiDeleteBin6Line } from "react-icons/ri";
+import React from 'react'
+import { MdDelete, MdShoppingCart } from 'react-icons/md'
+import Image from 'next/image'
+import { RiDeleteBin6Line } from 'react-icons/ri'
 
-const LeftCompo = ({ products }) => {
+interface LeftCompoProps {
+  products: any[]
+}
+
+const LeftCompo = ({ products }: LeftCompoProps) => {
   return (
-    <div className="lg:basis-2/3 px-8 py-10">
-      <div className="bg-white border px-8 py-4 rounded-md">
+    <div className="px-8 py-10 lg:basis-2/3">
+      <div className="rounded-md border bg-white px-8 py-4">
         <div className="flex justify-between">
-          <div className="font-extrabold sm:text-md lg:text-xl">
+          <div className="sm:text-md font-extrabold lg:text-xl">
             Wishlist (3)
           </div>
-          <div className="flex item-center">
+          <div className="item-center flex">
             <RiDeleteBin6Line size={20} />
-            <div className="text-sm text-gray-600 px-1">Delete All</div>
+            <div className="px-1 text-sm text-gray-600">Delete All</div>
           </div>
         </div>
       </div>
@@ -22,36 +26,36 @@ const LeftCompo = ({ products }) => {
         {products.map((product) => (
           <div
             key={product._id}
-            className="flex md:flex-row flex-col border mt-10 py-4 px-6"
+            className="mt-10 flex flex-col border py-4 px-6 md:flex-row"
           >
-            <div className="w-32 h-32 border border-primary md:flex hidden justify-center items-center">
+            <div className="hidden h-32 w-32 items-center justify-center border border-primary md:flex">
               <Image
                 src={product.images[0]}
-                className="w-24 h-24 object-contain"
+                className="h-24 w-24 object-contain"
                 alt=""
               />
             </div>
 
-            <div className="md:w-1/2 w-full flex md:flex-col flex-row md:space-y-4 md:justify-start justify-between md:px-4">
-              <p className="text-lg text-primary font-semibold">
+            <div className="flex w-full flex-row justify-between md:w-1/2 md:flex-col md:justify-start md:space-y-4 md:px-4">
+              <p className="text-lg font-semibold text-primary">
                 {product.name}
               </p>
-              <p className="text-secondary font-semibold">{`$${product.price}`}</p>
+              <p className="font-semibold text-secondary">{`$${product.price}`}</p>
             </div>
 
-            <div className="flex md:flex-col flex-row-reverse md:w-1/3 w-full md:items-end md:space-y-4 md:justify-start justify-between md:mt-0 mt-4">
+            <div className="mt-4 flex w-full flex-row-reverse justify-between md:mt-0 md:w-1/3 md:flex-col md:items-end md:justify-start md:space-y-4">
               <MdDelete size={24} />
 
-              <button className="bg-primary w-7/12 py-1.5 text-white text-sm rounded-md flex items-center justify-center space-x-1">
+              <button className="flex w-7/12 items-center justify-center space-x-1 rounded-md bg-primary py-1.5 text-sm text-white">
                 <MdShoppingCart size={24} />
-                <p className="text-white text-sm">Add to Cart</p>
+                <p className="text-sm text-white">Add to Cart</p>
               </button>
             </div>
           </div>
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LeftCompo;
+export default LeftCompo

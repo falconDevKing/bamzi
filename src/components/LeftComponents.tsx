@@ -1,77 +1,76 @@
-import image from "../assets/D1-image5.png";
-import image4 from "../assets/D1-image5.png";
-import image5 from "../assets/Icon metro-shop.png";
-import image6 from "../assets/D6-image4.png";
-import Image from "next/image";
-import Link from "next/link";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { FiHeart } from "react-icons/fi";
+import image from '../assets/D1-image5.png'
+import image4 from '../assets/D1-image5.png'
+import image5 from '../assets/Icon metro-shop.png'
+import image6 from '../assets/D6-image4.png'
+import Image from 'next/image'
+import Link from 'next/link'
+import { RiDeleteBin6Line } from 'react-icons/ri'
+import { FiHeart } from 'react-icons/fi'
 
 const LeftComponents = () => {
   return (
-    <div className="lg:basis-2/3 px-8">
-      <div className="bg-white border px-8 py-4 rounded">
+    <div className="px-8 lg:basis-2/3">
+      <div className="rounded border bg-white px-8 py-4">
         {/* <!--Shopping cart div--> */}
 
-        <div className="font-bold text-xl">Shopping Cart (4)</div>
+        <div className="text-xl font-bold">Shopping Cart (4)</div>
         <div className="flex justify-between pt-4">
           <div className="">
             <input type="checkbox" id="" name="" value="Select" />
-            <label htmlFor="" className="text-sm text-gray-600 px-1">
+            <label htmlFor="" className="px-1 text-sm text-gray-600">
               Select All
             </label>
             <br />
           </div>
-          <div className="flex item-center">
+          <div className="item-center flex">
             <RiDeleteBin6Line />
-            <div className="text-sm text-gray-600 px-1">Delete All</div>
+            <div className="px-1 text-sm text-gray-600">Delete All</div>
           </div>
         </div>
       </div>
 
-      <div className="bg-white border px-8  py-3 rounded mt-2">
+      <div className="mt-2 rounded border  bg-white px-8 py-3">
         <div className="flex items-center py-2">
           <input type="checkbox" value="Select" className="" />
-          <Image src={image5} alt="" className="w-4 h-4 ml-3" />
+          <Image src={image5} alt="" className="ml-3 h-4 w-4" />
           <div className="ml-3 text-gray-500">Evax Electronics Store</div>
         </div>
       </div>
 
-      <div className="bg-white w-full border rounded mt-2">
-        <div className="flex py-4 px-6 w-full justify-between">
+      <div className="mt-2 w-full rounded border bg-white">
+        <div className="flex w-full justify-between py-4 px-6">
           <div className="flex space-x-4">
             <div className="px-2">
               <input type="checkbox" value="Select" className="" />
             </div>
 
-            <div className="flex justify-center items-center border w-28 h-28">
-              <div className="flex w-20 h-20">
+            <div className="flex h-28 w-28 items-center justify-center border">
+              <div className="flex h-20 w-20">
                 <Image className="" src={image} alt="product image" />
               </div>
             </div>
             <div className="px-3">
               <div className="font-bold">Apple Watch 2.0 Ipv4</div>
               <div className="flex py-2">
-                <div className="flex font-normal text-md items-center">
-                  {" "}
+                <div className="text-md flex items-center font-normal">
                   Color
-                  <div className="bg-red-500 w-5 h-5 mx-2 rounded shadow-md"></div>
+                  <div className="mx-2 h-5 w-5 rounded bg-red-500 shadow-md"></div>
                 </div>
-                <div className="flex font-normal text-md items-center">
+                <div className="text-md flex items-center font-normal">
                   Size
-                  <div className="bg-gray-300 w-10 h-5 mx-2 rounded-xl shadow-md">
-                    <div className="text-xs text-center">XL</div>
+                  <div className="mx-2 h-5 w-10 rounded-xl bg-gray-300 shadow-md">
+                    <div className="text-center text-xs">XL</div>
                   </div>
                 </div>
               </div>
               <div>
-                <div className="text-yellow-400 text-sm font-medium">
+                <div className="text-sm font-medium text-yellow-400">
                   US $399
                 </div>
                 <div className="text-sm">
-                  <span className="text-blue-600 text-sm">
+                  <span className="text-sm text-blue-600">
                     Shipping US $18.99
-                  </span>{" "}
+                  </span>
                   all Express Delivery
                 </div>
                 <div className="text-sm">
@@ -81,60 +80,59 @@ const LeftComponents = () => {
             </div>
           </div>
           <div className="mx-12">
-            <div className="flex justify-end mb-6 space-x-2">
+            <div className="mb-6 flex justify-end space-x-2">
               <FiHeart size={24} />
               <RiDeleteBin6Line size={24} />
             </div>
 
-            <div className="flex items-center h-12">
+            <div className="flex h-12 items-center">
               <span className="p-4 ">QTY</span>
-              <span className="bg-gray-300 text-gray-500 border rounded-l w-8 flex justify-center items-center">
+              <span className="flex w-8 items-center justify-center rounded-l border bg-gray-300 text-gray-500">
                 -
               </span>
-              <span className="bg-gray-100 text-gray-500 border w-8 flex justify-center items-center">
+              <span className="flex w-8 items-center justify-center border bg-gray-100 text-gray-500">
                 01
               </span>
-              <span className="bg-gray-300 text-gray-500 border rounded-r w-8 flex justify-center items-center">
+              <span className="flex w-8 items-center justify-center rounded-r border bg-gray-300 text-gray-500">
                 +
               </span>
             </div>
           </div>
         </div>
 
-        <div className="flex py-4 px-6 w-full justify-between">
+        <div className="flex w-full justify-between py-4 px-6">
           <div className="flex space-x-4">
             <div className="px-2">
               <input type="checkbox" value="Select" className="" />
             </div>
 
-            <div className="flex justify-center items-center border w-28 h-28">
-              <div className="flex w-20 h-20">
+            <div className="flex h-28 w-28 items-center justify-center border">
+              <div className="flex h-20 w-20">
                 <Image className="" src={image4} alt="product image" />
               </div>
             </div>
             <div className="px-3">
               <div className="font-bold">Apple Watch 2.0 Ipv4</div>
               <div className="flex py-2">
-                <div className="flex font-normal text-md items-center">
-                  {" "}
+                <div className="text-md flex items-center font-normal">
                   Color
-                  <div className="bg-blue-500 w-5 h-5 mx-2 rounded shadow-md"></div>
+                  <div className="mx-2 h-5 w-5 rounded bg-blue-500 shadow-md"></div>
                 </div>
-                <div className="flex font-normal text-md items-center">
+                <div className="text-md flex items-center font-normal">
                   Size
-                  <div className="bg-gray-300 w-10 h-5 mx-2 rounded-xl shadow-md">
-                    <div className="text-xs text-center">XL</div>
+                  <div className="mx-2 h-5 w-10 rounded-xl bg-gray-300 shadow-md">
+                    <div className="text-center text-xs">XL</div>
                   </div>
                 </div>
               </div>
               <div>
-                <div className="text-yellow-400 text-sm font-medium">
+                <div className="text-sm font-medium text-yellow-400">
                   US $399
                 </div>
                 <div className="text-sm">
-                  <span className="text-blue-600 text-sm">
+                  <span className="text-sm text-blue-600">
                     Shipping US $18.99
-                  </span>{" "}
+                  </span>
                   all Express Delivery
                 </div>
                 <div className="text-sm">
@@ -145,20 +143,20 @@ const LeftComponents = () => {
           </div>
 
           <div className="mx-12">
-            <div className="flex justify-end mb-6 space-x-2">
+            <div className="mb-6 flex justify-end space-x-2">
               <FiHeart size={24} />
               <RiDeleteBin6Line size={24} />
             </div>
 
-            <div className="flex items-center h-12">
+            <div className="flex h-12 items-center">
               <span className="p-4 ">QTY</span>
-              <span className="bg-gray-300 text-gray-500 border rounded-l w-8 flex justify-center items-center">
+              <span className="flex w-8 items-center justify-center rounded-l border bg-gray-300 text-gray-500">
                 -
               </span>
-              <span className="bg-gray-100 text-gray-500 border w-8 flex justify-center items-center">
+              <span className="flex w-8 items-center justify-center border bg-gray-100 text-gray-500">
                 01
               </span>
-              <span className="bg-gray-300 text-gray-500 border rounded-r w-8 flex justify-center items-center">
+              <span className="flex w-8 items-center justify-center rounded-r border bg-gray-300 text-gray-500">
                 +
               </span>
             </div>
@@ -166,20 +164,20 @@ const LeftComponents = () => {
         </div>
       </div>
 
-      <div className="bg-white border px-8  py-3 rounded mt-2">
+      <div className="mt-2 rounded border  bg-white px-8 py-3">
         <div className="flex items-center py-2">
           <input type="checkbox" value="Select" className="" />
-          <Image src={image5} alt="" className="w-4 h-4 ml-3" />
+          <Image src={image5} alt="" className="ml-3 h-4 w-4" />
           <div className="ml-3 text-gray-500">Lola Saloon and SPA</div>
         </div>
       </div>
 
-      <div className="bg-white w-full border rounded mt-2 flex py-6 px-6 justify-between">
+      <div className="mt-2 flex w-full justify-between rounded border bg-white py-6 px-6">
         <div className="flex space-x-4">
           <div className="px-2">
             <input type="checkbox" value="Select" className="" />
           </div>
-          <div className="border w-24 h-24 ">
+          <div className="h-24 w-24 border ">
             <div className="">
               <Link href="#" className="">
                 <a>
@@ -189,30 +187,29 @@ const LeftComponents = () => {
             </div>
           </div>
           <div className="px-3">
-            <div className="font-bold text-sm">
+            <div className="text-sm font-bold">
               Weaving Fibrex set of wigs 12cm length silk
             </div>
             <div className="flex py-4">
-              <div className="flex font-normal text-md items-center">
-                {" "}
+              <div className="text-md flex items-center font-normal">
                 Length
-                <div className="bg-gray-200 mx-2 px-3 py-0.5 rounded-lg text-center shadow-md text-xs">
+                <div className="mx-2 rounded-lg bg-gray-200 px-3 py-0.5 text-center text-xs shadow-md">
                   12cm-16cm
                 </div>
               </div>
-              <div className="flex font-normal text-md items-center">
+              <div className="text-md flex items-center font-normal">
                 Texture
-                <div className="bg-gray-300 px-3 py-0.5 mx-2 rounded-xl shadow-md">
-                  <div className="text-xs text-center">Fibre</div>
+                <div className="mx-2 rounded-xl bg-gray-300 px-3 py-0.5 shadow-md">
+                  <div className="text-center text-xs">Fibre</div>
                 </div>
               </div>
             </div>
             <div>
-              <div className="text-yellow-400 text-sm font-medium">US $399</div>
+              <div className="text-sm font-medium text-yellow-400">US $399</div>
               <div className="text-sm">
-                <span className="text-blue-600 text-sm">
+                <span className="text-sm text-blue-600">
                   Shipping US $18.99
-                </span>{" "}
+                </span>
                 all Express Delivery
               </div>
               <div className="text-sm">Estimated Delivery Time 25-30 Days</div>
@@ -220,27 +217,27 @@ const LeftComponents = () => {
           </div>
         </div>
         <div className="mx-12">
-          <div className="flex justify-end mb-6 space-x-2">
+          <div className="mb-6 flex justify-end space-x-2">
             <FiHeart size={24} />
             <RiDeleteBin6Line size={24} />
           </div>
 
-          <div className="flex items-center h-12">
+          <div className="flex h-12 items-center">
             <span className="p-4 ">QTY</span>
-            <span className="bg-gray-300 text-gray-500 border rounded-l w-8 flex justify-center items-center">
+            <span className="flex w-8 items-center justify-center rounded-l border bg-gray-300 text-gray-500">
               -
             </span>
-            <span className="bg-gray-100 text-gray-500 border w-8 flex justify-center items-center">
+            <span className="flex w-8 items-center justify-center border bg-gray-100 text-gray-500">
               01
             </span>
-            <span className="bg-gray-300 text-gray-500 border rounded-r w-8 flex justify-center items-center">
+            <span className="flex w-8 items-center justify-center rounded-r border bg-gray-300 text-gray-500">
               +
             </span>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LeftComponents;
+export default LeftComponents

@@ -1,4 +1,16 @@
-import React from "react"
+import React from 'react'
+
+interface PaginationProps {
+  productsPerPage: number
+  totalProducts: number
+  currentPage: number
+  paginate: (value: number) => void
+  minPageNumberLimit: number
+  maxPageNumberLimit: number
+  pageNumberLimit: number
+  prevPage: () => void
+  nextPage: () => void
+}
 
 const Pagination = ({
   productsPerPage,
@@ -9,7 +21,7 @@ const Pagination = ({
   maxPageNumberLimit,
   prevPage,
   nextPage,
-}) => {
+}: PaginationProps) => {
   const pageNumbers = []
 
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
@@ -19,19 +31,19 @@ const Pagination = ({
   return (
     <div className="mt-10 flex items-center justify-center">
       <button
-        className="p-2.5 border-2 border-primary"
+        className="border-2 border-primary p-2.5"
         onClick={prevPage}
         disabled={currentPage === pageNumbers[0] ? true : false}
       >
         Prev
       </button>
-      {pageNumbers.map(number => {
+      {pageNumbers.map((number) => {
         if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
           return (
             <li
               key={number}
-              id={number}
-              className="py-2.5 px-4 list-none border-2 border-primary cursor-pointer active:bg-primary active:text-white"
+              // id={number}
+              className="cursor-pointer list-none border-2 border-primary py-2.5 px-4 active:bg-primary active:text-white"
               onClick={() => paginate(number)}
             >
               {number}
@@ -42,7 +54,7 @@ const Pagination = ({
         }
       })}
       <button
-        className="p-2.5 border-2 border-primary"
+        className="border-2 border-primary p-2.5"
         onClick={nextPage}
         disabled={currentPage === pageNumbers.length}
       >
