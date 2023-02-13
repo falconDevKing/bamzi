@@ -1,4 +1,10 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react'
+import React, {
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+  MouseEvent,
+} from 'react'
 import {
   FiGrid,
   FiPlus,
@@ -38,11 +44,13 @@ export default function SellersBoard() {
   const [editProduct, setEditProduct] = useState<boolean>(false)
   const [productID, setProductID] = useState<string>('')
 
-  const [selectedCategory, setSelectedCategory] = useState<string>('')
-  const [selectedBrand, setSelectedBrand] = useState<string>('')
-  const [selectedColor, setSelectedColor] = useState<string>('')
-  const [selectedRam, setSelectedRam] = useState<string>('')
-  const [selectedSize, setSelectedSize] = useState<string>('')
+  const [selectedCategory, setSelectedCategory] = useState<readonly string[]>(
+    []
+  )
+  const [selectedBrand, setSelectedBrand] = useState<readonly string[]>([])
+  const [selectedColor, setSelectedColor] = useState<readonly string[]>([])
+  const [selectedRam, setSelectedRam] = useState<readonly string[]>([])
+  const [selectedSize, setSelectedSize] = useState<readonly string[]>([])
   const [title, setTitle] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [subCategory, setSubCategory] = useState<string>('')
@@ -50,7 +58,7 @@ export default function SellersBoard() {
   const [length, setLength] = useState<string>('')
   const [texture, setTexture] = useState<string>('')
   const [stock, setStock] = useState<string>('')
-  const [image, setImage] = useState<string>('')
+  const [image, setImage] = useState<any>('')
   const [selectedImages, setSelectedImages] = useState<string[]>([])
 
   const indexOfLastProduct = currentPage * productsPerPage
@@ -80,29 +88,29 @@ export default function SellersBoard() {
     }
   }
 
-  let selectedColors = []
+  let selectedColors: string[] = []
   const handleColor = () => {
     if (selectedColor) {
       selectedColor.map((item) => {
-        selectedColors.push(item.value)
+        selectedColors.push(item)
       })
     }
   }
 
-  let selectedRams = []
+  let selectedRams: string[] = []
   const handleRam = () => {
     if (selectedRam) {
       selectedRam.map((item) => {
-        selectedRams.push(item.value)
+        selectedRams.push(item)
       })
     }
   }
 
-  let selectedSizes = []
+  let selectedSizes: string[] = []
   const handleSize = () => {
     if (selectedSize) {
       selectedSize.map((item) => {
-        selectedSizes.push(item.value)
+        selectedSizes.push(item)
       })
     }
   }
@@ -138,7 +146,9 @@ export default function SellersBoard() {
     fetchData()
   }, [])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
     e.preventDefault()
     handleColor()
     handleSize()
@@ -147,9 +157,9 @@ export default function SellersBoard() {
       .post('http://localhost:4000/bamzi/products/add', {
         name: title,
         description: description,
-        category: selectedCategory.value,
+        category: selectedCategory,
         subCategory: subCategory,
-        brand: selectedBrand.value,
+        brand: selectedBrand,
         price: price,
         images: selectedImages,
         colors: selectedColors,
@@ -163,13 +173,13 @@ export default function SellersBoard() {
         console.log(res)
         setTitle('')
         setDescription('')
-        setSelectedCategory('')
+        setSelectedCategory([''])
         setSubCategory('')
-        setSelectedBrand('')
+        setSelectedBrand([''])
         setPrice('')
-        setSelectedColor('')
-        setSelectedRam('')
-        setSelectedSize('')
+        setSelectedColor([''])
+        setSelectedRam([''])
+        setSelectedSize([''])
         setLength('')
         setTexture('')
         setStock('')
@@ -179,7 +189,9 @@ export default function SellersBoard() {
       })
   }
 
-  const handleEdit = (e) => {
+  const handleEdit = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
     e.preventDefault()
     handleColor()
     handleSize()
@@ -189,9 +201,9 @@ export default function SellersBoard() {
         productID: productID,
         name: title,
         description: description,
-        category: selectedCategory.value,
+        category: selectedCategory,
         subCategory: subCategory,
-        brand: selectedBrand.value,
+        brand: selectedBrand,
         price: price,
         images: selectedImages,
         colors: selectedColors,
@@ -206,13 +218,13 @@ export default function SellersBoard() {
         setProductID('')
         setTitle('')
         setDescription('')
-        setSelectedCategory('')
+        setSelectedCategory([''])
         setSubCategory('')
-        setSelectedBrand('')
+        setSelectedBrand([''])
         setPrice('')
-        setSelectedColor('')
-        setSelectedRam('')
-        setSelectedSize('')
+        setSelectedColor([''])
+        setSelectedRam([''])
+        setSelectedSize([''])
         setLength('')
         setTexture('')
         setStock('')
@@ -222,12 +234,16 @@ export default function SellersBoard() {
       })
   }
 
-  const deleteProduct = async (productID) => {
+  const deleteProduct = async (productID: string) => {
     const res = await axios.post(
       'http://localhost:4000/bamzi/products/delete',
       { productID: productID }
     )
     return res
+  }
+
+  const SelectCompIsh = (array: { label: string; value: string }[]) => {
+    return array.map((option) => option.value)
   }
 
   return (
@@ -350,13 +366,13 @@ export default function SellersBoard() {
                   onClick={() => {
                     setTitle('')
                     setDescription('')
-                    setSelectedCategory('')
+                    setSelectedCategory([''])
                     setSubCategory('')
-                    setSelectedBrand('')
+                    setSelectedBrand([''])
                     setPrice('')
-                    setSelectedColor('')
-                    setSelectedRam('')
-                    setSelectedSize('')
+                    setSelectedColor([''])
+                    setSelectedRam([''])
+                    setSelectedSize([''])
                     setLength('')
                     setTexture('')
                     setStock('')
@@ -401,7 +417,7 @@ export default function SellersBoard() {
                       id="description"
                       value={description}
                       className={inputStyles}
-                      rows="4"
+                      rows={4}
                       placeholder="Product Description Max (40)"
                       onChange={(e) => setDescription(e.target.value)}
                     ></textarea>
@@ -410,10 +426,10 @@ export default function SellersBoard() {
                   <div className="space-y-1">
                     <span>Category</span>
                     <Select
-                      options={checkboxCategoryData}
+                      options={SelectCompIsh(checkboxCategoryData)}
                       placeholder="Please choose"
                       defaultValue={selectedCategory}
-                      onChange={setSelectedCategory}
+                      onChange={(e) => setSelectedCategory([e as string])}
                     />
                   </div>
 
@@ -433,10 +449,10 @@ export default function SellersBoard() {
                   <div className="space-y-1">
                     <span>Brand</span>
                     <Select
-                      options={checkboxBrandData}
+                      options={SelectCompIsh(checkboxBrandData)}
                       placeholder="Please choose"
                       defaultValue={selectedBrand}
-                      onChange={setSelectedBrand}
+                      onChange={(e) => setSelectedBrand([e as string])}
                     />
                   </div>
 
@@ -474,10 +490,10 @@ export default function SellersBoard() {
                   <div className="space-y-1">
                     <span>Color</span>
                     <Select
-                      options={colors}
+                      options={SelectCompIsh(colors)}
                       placeholder="Please choose"
                       defaultValue={selectedColor}
-                      onChange={setSelectedColor}
+                      onChange={(e) => setSelectedColor(e)}
                       isMulti
                     />
                   </div>
@@ -485,10 +501,10 @@ export default function SellersBoard() {
                   <div className="space-y-1">
                     <span>RAM</span>
                     <Select
-                      options={ram}
+                      options={SelectCompIsh(ram)}
                       placeholder="Please choose"
                       defaultValue={selectedRam}
-                      onChange={setSelectedRam}
+                      onChange={(e) => setSelectedRam(e)}
                       isMulti
                     />
                   </div>
@@ -496,10 +512,10 @@ export default function SellersBoard() {
                   <div className="space-y-1">
                     <span>Size</span>
                     <Select
-                      options={sizes}
+                      options={SelectCompIsh(sizes)}
                       placeholder="Please choose"
                       defaultValue={selectedSize}
-                      onChange={setSelectedSize}
+                      onChange={(e) => setSelectedSize(e)}
                       isMulti
                     />
                   </div>
@@ -565,13 +581,13 @@ export default function SellersBoard() {
                   onClick={() => {
                     setTitle('')
                     setDescription('')
-                    setSelectedCategory('')
+                    setSelectedCategory([''])
                     setSubCategory('')
-                    setSelectedBrand('')
+                    setSelectedBrand([''])
                     setPrice('')
-                    setSelectedColor('')
-                    setSelectedRam('')
-                    setSelectedSize('')
+                    setSelectedColor([''])
+                    setSelectedRam([''])
+                    setSelectedSize([''])
                     setLength('')
                     setTexture('')
                     setStock('')
@@ -616,7 +632,7 @@ export default function SellersBoard() {
                       id="description"
                       value={description}
                       className={inputStyles}
-                      rows="4"
+                      rows={4}
                       placeholder="Product Description Max (40)"
                       onChange={(e) => setDescription(e.target.value)}
                     ></textarea>
@@ -625,10 +641,10 @@ export default function SellersBoard() {
                   <div className="space-y-1">
                     <span>Category</span>
                     <Select
-                      options={checkboxCategoryData}
+                      options={SelectCompIsh(checkboxCategoryData)}
                       placeholder="Please choose"
                       defaultValue={selectedCategory}
-                      onChange={setSelectedCategory}
+                      onChange={(e) => setSelectedCategory([e as string])}
                     />
                   </div>
 
@@ -648,10 +664,10 @@ export default function SellersBoard() {
                   <div className="space-y-1">
                     <span>Brand</span>
                     <Select
-                      options={checkboxBrandData}
+                      options={SelectCompIsh(checkboxBrandData)}
                       placeholder="Please choose"
                       defaultValue={selectedBrand}
-                      onChange={setSelectedBrand}
+                      onChange={(e) => setSelectedBrand([e as string])}
                     />
                   </div>
 
@@ -689,7 +705,7 @@ export default function SellersBoard() {
                   <div className="space-y-1">
                     <span>Color</span>
                     <Select
-                      options={colors}
+                      options={SelectCompIsh(colors)}
                       placeholder="Please choose"
                       defaultValue={selectedColor}
                       onChange={setSelectedColor}
@@ -700,10 +716,10 @@ export default function SellersBoard() {
                   <div className="space-y-1">
                     <span>RAM</span>
                     <Select
-                      options={ram}
+                      options={SelectCompIsh(ram)}
                       placeholder="Please choose"
                       defaultValue={selectedRam}
-                      onChange={setSelectedRam}
+                      onChange={(e) => setSelectedRam(e)}
                       isMulti
                     />
                   </div>
@@ -711,10 +727,10 @@ export default function SellersBoard() {
                   <div className="space-y-1">
                     <span>Size</span>
                     <Select
-                      options={sizes}
+                      options={SelectCompIsh(sizes)}
                       placeholder="Please choose"
                       defaultValue={selectedSize}
-                      onChange={setSelectedSize}
+                      onChange={(e) => setSelectedSize(e)}
                       isMulti
                     />
                   </div>

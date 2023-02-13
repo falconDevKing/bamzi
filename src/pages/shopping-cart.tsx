@@ -1,31 +1,31 @@
-import Header from "../components/header";
-import RightComponents from "../components/RightComponents";
-import LeftComponents from "../components/LeftComponents";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import Header from '../components/header'
+import RightComponents from '../components/RightComponents'
+import LeftComponents from '../components/LeftComponents'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const ShoppingCart = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<any[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get("http://localhost:4000/bamzi/cart/");
-      console.log(res);
-      setProducts(res.data.response);
-    };
+      const res = await axios.get('http://localhost:4000/bamzi/cart/')
+      console.log(res)
+      setProducts(res.data.response)
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
     <div className="font-poppins">
       <Header pryNav="user" secNav="user" />
-      <div className="lg:flex my-16">
-        <LeftComponents products={products} />
+      <div className="my-16 lg:flex">
+        <LeftComponents />
         <RightComponents />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ShoppingCart;
+export default ShoppingCart

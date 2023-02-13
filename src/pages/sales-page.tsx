@@ -14,7 +14,7 @@ import {
 import { FiGrid, FiSearch } from 'react-icons/fi'
 
 export default function SalesPage() {
-  const [showSidebar, setShowSidebar] = useState(false)
+  const [showSidebar, setShowSidebar] = useState<boolean>(false)
 
   return (
     <div className="relative min-h-screen font-poppins  lg:grid lg:grid-cols-6">

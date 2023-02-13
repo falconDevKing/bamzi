@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import AuthStrip from "../components/auth/AuthStrip";
-import AuthCart from "../components/auth/AuthCart";
-import AuthBody from "../components/auth/AuthBody";
-import AuthContent from "../components/auth/AuthContent";
-import AuthContainer from "../components/auth/AuthContainer";
-import Header from "../components/header";
-import axios from "axios";
-import Link from "next/link";
+import React, { useState, FormEvent } from 'react'
+import AuthStrip from '../components/auth/AuthStrip'
+import AuthCart from '../components/auth/AuthCart'
+import AuthBody from '../components/auth/AuthBody'
+import AuthContent from '../components/auth/AuthContent'
+import AuthContainer from '../components/auth/AuthContainer'
+import Header from '../components/header'
+import axios from 'axios'
+import Link from 'next/link'
 
 export default function ForgotPassword() {
-  const url = "http://localhost:4000/bamzi/forgot-password";
-  const [email, setEmail] = useState("");
+  const url = 'http://localhost:4000/bamzi/forgot-password'
+  const [email, setEmail] = useState('')
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     axios
       .put(url, {
         email: email,
       })
       .then((res) => {
-        console.log(res);
-      });
-    setEmail("");
-  };
+        console.log(res)
+      })
+    setEmail('')
+  }
 
   return (
     <AuthContainer>
@@ -32,14 +32,14 @@ export default function ForgotPassword() {
         <AuthStrip />
         <AuthContent>
           <Link href="/login" className="p-0 font-normal">
-            <p className="text-secondary underline cursor-pointer">
+            <p className="cursor-pointer text-secondary underline">
               Remember Password?
             </p>
           </Link>
-          <p className="text-4xl text-primary font-bold leading-6">
+          <p className="text-4xl font-bold leading-6 text-primary">
             Verification
           </p>
-          <p className="text-gray-400 text-sm">
+          <p className="text-sm text-gray-400">
             Input your email and a verification link would be sent to your
             mailbox
           </p>
@@ -53,12 +53,12 @@ export default function ForgotPassword() {
               value={email}
               autoComplete="off"
               placeholder="Email Address"
-              className="py-2 px-6 shadow rounded border border-gray-100"
+              className="rounded border border-gray-100 py-2 px-6 shadow"
               onChange={(e) => setEmail(e.target.value)}
             />
             <button
-              className="bg-primary rounded text-white py-2 font-semibold"
-              onClick={(e) => handleSubmit(e)}
+              type="submit"
+              className="rounded bg-primary py-2 font-semibold text-white"
             >
               Reset
             </button>
@@ -67,5 +67,5 @@ export default function ForgotPassword() {
         <AuthCart />
       </AuthBody>
     </AuthContainer>
-  );
+  )
 }

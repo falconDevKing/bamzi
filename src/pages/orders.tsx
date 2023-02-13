@@ -7,9 +7,9 @@ import UserSidebar from '../components/user/UserSidebar'
 import { orders } from '../utils/data'
 
 export default function Orders() {
-  const [tab, setTab] = useState(0)
-  const [showDetails, setShowDetails] = useState(false)
-  const [showStatus, setShowStatus] = useState(false)
+  const [tab, setTab] = useState<number>(0)
+  const [showDetails, setShowDetails] = useState<boolean>(false)
+  const [showStatus, setShowStatus] = useState<boolean>(false)
 
   const toggleTab = (index: number) => {
     setTab(index)

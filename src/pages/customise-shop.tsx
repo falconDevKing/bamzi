@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import axios from 'axios'
 import Sidebar from '../components/sidebar'
 import SellersHeader from '../components/SellersHeader'
@@ -8,12 +8,15 @@ import { BsPaletteFill, BsStack } from 'react-icons/bs'
 
 export default function CustomiseShop() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false)
-  const [image, setImage] = useState('')
-  const [bgImage, setBgImage] = useState('')
-  const [loading, setLoading] = useState(true)
+  const [image, setImage] = useState<string>('')
+  const [bgImage, setBgImage] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(true)
 
-  const uploadImage = (e) => {
-    const files = e.target.files[0]
+  const uploadImage = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return
+    }
+    const files = e.target.files[0] ?? ''
     const formData = new FormData()
     formData.append('upload_preset', 'bamzi_image')
     formData.append('file', files)
@@ -29,7 +32,10 @@ export default function CustomiseShop() {
       .catch((err) => console.log(err))
   }
 
-  const uploadBgImage = (e) => {
+  const uploadBgImage = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return
+    }
     const files = e.target.files[0]
     const formData = new FormData()
     formData.append('upload_preset', 'bamzi_image')
@@ -84,7 +90,7 @@ export default function CustomiseShop() {
               <div className="flex space-x-4">
                 <textarea
                   className="w-full rounded-lg border border-primary px-4 py-2 placeholder:text-sm placeholder:text-gray-400 lg:w-8/12"
-                  rows="4"
+                  rows={4}
                   placeholder="Store Description Max (40)"
                 ></textarea>
                 <p className="hidden w-3/12 text-sm italic lg:block">

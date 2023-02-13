@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { FaQuestionCircle, FaHeart } from "react-icons/fa";
-import { MdNotificationsActive } from "react-icons/md";
-import { GrPowerForceShutdown } from "react-icons/gr";
-import { IoIosArrowDropdown } from "react-icons/io";
+import React, { useState } from 'react'
+import { FaQuestionCircle, FaHeart } from 'react-icons/fa'
+import { MdNotificationsActive } from 'react-icons/md'
+import { GrPowerForceShutdown } from 'react-icons/gr'
+import { IoIosArrowDropdown } from 'react-icons/io'
 import Image from 'next/image'
-import { HiUsers } from "react-icons/hi";
-import styles from "../styles/sellers.module.css";
-import Sidebar from "../components/sidebar";
-import SellersHeader from "../components/SellersHeader";
+import { HiUsers } from 'react-icons/hi'
+import styles from '../styles/sellers.module.css'
+import Sidebar from '../components/sidebar'
+import SellersHeader from '../components/SellersHeader'
 
 export default function Sellers() {
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false)
 
   return (
     <div className={styles.mainContainer}>
@@ -33,10 +33,10 @@ export default function Sellers() {
             <FaQuestionCircle
               size={12}
               style={{
-                position: "absolute",
-                color: "white",
-                top: "0.5rem",
-                right: "0.5rem",
+                position: 'absolute',
+                color: 'white',
+                top: '0.5rem',
+                right: '0.5rem',
               }}
             />
             <h6>Bad goods</h6>
@@ -46,10 +46,10 @@ export default function Sellers() {
             <FaQuestionCircle
               size={12}
               style={{
-                position: "absolute",
-                color: "white",
-                top: "0.5rem",
-                right: "0.5rem",
+                position: 'absolute',
+                color: 'white',
+                top: '0.5rem',
+                right: '0.5rem',
               }}
             />
             <h6>pending sales</h6>
@@ -59,26 +59,26 @@ export default function Sellers() {
             <FaQuestionCircle
               size={12}
               style={{
-                position: "absolute",
-                color: "black",
-                top: "0.5rem",
-                right: "0.5rem",
+                position: 'absolute',
+                color: 'black',
+                top: '0.5rem',
+                right: '0.5rem',
               }}
             />
             <h6>Wishlist Store</h6>
             <span>
               <h2>500</h2>
-              <FaHeart color={"#fdd25a"} />
+              <FaHeart color={'#fdd25a'} />
             </span>
           </div>
           <div className={styles.customer}>
             <FaQuestionCircle
               size={12}
               style={{
-                position: "absolute",
-                color: "black",
-                top: "0.5rem",
-                right: "0.5rem",
+                position: 'absolute',
+                color: 'black',
+                top: '0.5rem',
+                right: '0.5rem',
               }}
             />
             <h6>customers</h6>
@@ -91,109 +91,109 @@ export default function Sellers() {
         <div
           className={styles.all}
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
           }}
         >
           <div className={styles.latest}>
             <h6>Latest Sales(28)</h6>
             <div
               className={styles.sound}
-              style={{ display: "flex", marginTop: "20px" }}
+              style={{ display: 'flex', marginTop: '20px' }}
             >
               <div
                 className={styles.next}
                 style={{
-                  width: "64px",
-                  height: "64px",
-                  padding: "0.5rem",
+                  width: '64px',
+                  height: '64px',
+                  padding: '0.5rem',
 
-                  border: "1px solid blue",
-                  borderRadius: "0.3rem",
+                  border: '1px solid blue',
+                  borderRadius: '0.3rem',
                 }}
               >
-                <Image src={require("../assets/iphone.png")} alt="" />
+                <Image src={require('../assets/iphone.png')} alt="" />
               </div>
               <div
                 className={styles.iphones}
                 style={{
-                  marginLeft: "20px",
-                  whiteSpace: "nowrap",
-                  marginRight: "80px",
+                  marginLeft: '20px',
+                  whiteSpace: 'nowrap',
+                  marginRight: '80px',
                 }}
               >
                 <p>iphone X 6 GB Ram</p>
                 <span
                   className={styles.newQty}
                   style={{
-                    display: "flex",
+                    display: 'flex',
                   }}
                 >
-                  <p style={{ marginRight: "20px", fontSize: "1.2rem" }}>QTY</p>
+                  <p style={{ marginRight: '20px', fontSize: '1.2rem' }}>QTY</p>
                   <p
                     style={{
-                      backgroundColor: "grey",
-                      width: "50px",
-                      textAlign: "center",
-                      borderRadius: "0.75rem",
-                      padding: "0.1rem",
+                      backgroundColor: 'grey',
+                      width: '50px',
+                      textAlign: 'center',
+                      borderRadius: '0.75rem',
+                      padding: '0.1rem',
                     }}
                   >
                     6
                   </p>
                 </span>
-                <p style={{ color: "yellow", marginTop: "5px" }}>$1500</p>
+                <p style={{ color: 'yellow', marginTop: '5px' }}>$1500</p>
               </div>
-              <div className={styles.time} style={{ whiteSpace: "nowrap" }}>
+              <div className={styles.time} style={{ whiteSpace: 'nowrap' }}>
                 <p>30min ago</p>
               </div>
             </div>
 
             <div
               className={styles.phones}
-              style={{ display: "flex", marginTop: "20px" }}
+              style={{ display: 'flex', marginTop: '20px' }}
             >
               <div
                 className={styles.phone2}
                 style={{
-                  width: "64px",
-                  height: "64px",
-                  padding: "0.5rem",
-                  border: "1px solid blue",
-                  borderRadius: "0.3rem",
+                  width: '64px',
+                  height: '64px',
+                  padding: '0.5rem',
+                  border: '1px solid blue',
+                  borderRadius: '0.3rem',
                 }}
               >
-                <Image src={require("../assets/iphone.png")} alt="" />
+                <Image src={require('../assets/iphone.png')} alt="" />
               </div>
               <div
                 className={styles.newPhone}
                 style={{
-                  marginLeft: "20px",
-                  whiteSpace: "nowrap",
+                  marginLeft: '20px',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 <p>iwatch X + free pouch and</p>
                 <p>Extra case</p>
-                <span className={styles.newQtys} style={{ display: "flex" }}>
-                  <p style={{ marginRight: "20px", fontSize: "1.2rem" }}>QTY</p>
+                <span className={styles.newQtys} style={{ display: 'flex' }}>
+                  <p style={{ marginRight: '20px', fontSize: '1.2rem' }}>QTY</p>
                   <p
                     style={{
-                      backgroundColor: "grey",
-                      width: "50px",
-                      textAlign: "center",
-                      borderRadius: "0.75rem",
-                      padding: "0.1rem",
+                      backgroundColor: 'grey',
+                      width: '50px',
+                      textAlign: 'center',
+                      borderRadius: '0.75rem',
+                      padding: '0.1rem',
                     }}
                   >
                     1
                   </p>
                 </span>
-                <p style={{ color: "yellow" }}>$1500</p>
+                <p style={{ color: 'yellow' }}>$1500</p>
               </div>
               <div
                 className={styles.hour}
-                style={{ marginLeft: "20px", whiteSpace: "nowrap" }}
+                style={{ marginLeft: '20px', whiteSpace: 'nowrap' }}
               >
                 <p>2 hours</p>
               </div>
@@ -204,45 +204,45 @@ export default function Sellers() {
           <div
             className={styles.besideLatest}
             style={{
-              display: "flex",
-              marginTop: "100px",
-              marginLeft: "20px",
-              width: "50%",
-              alignItems: "flex-start",
+              display: 'flex',
+              marginTop: '100px',
+              marginLeft: '20px',
+              width: '50%',
+              alignItems: 'flex-start',
             }}
           >
             <div
               className={styles.errorOrder}
               style={{
-                backgroundColor: "#fdd25a",
-                marginRight: "20px",
-                borderRadius: "0.5rem",
-                padding: "0.75rem 0.5rem",
-                width: "50%",
+                backgroundColor: '#fdd25a',
+                marginRight: '20px',
+                borderRadius: '0.5rem',
+                padding: '0.75rem 0.5rem',
+                width: '50%',
               }}
             >
               <MdNotificationsActive
                 size={24}
                 style={{
-                  color: "black",
-                  backgroundColor: "white",
-                  borderRadius: "50%",
-                  marginBottom: "0.25rem",
+                  color: 'black',
+                  backgroundColor: 'white',
+                  borderRadius: '50%',
+                  marginBottom: '0.25rem',
                 }}
               />
               <p
                 style={{
-                  fontSize: "1.25rem",
-                  lineHeight: "1.75rem",
-                  marginBottom: "0.25rem",
+                  fontSize: '1.25rem',
+                  lineHeight: '1.75rem',
+                  marginBottom: '0.25rem',
                 }}
               >
                 Error in Order
               </p>
               <p
                 style={{
-                  fontSize: "0.75rem",
-                  lineHeight: "1rem",
+                  fontSize: '0.75rem',
+                  lineHeight: '1rem',
                 }}
               >
                 You have an urgent package to take care of please check this and
@@ -252,16 +252,16 @@ export default function Sellers() {
             <div
               className={styles.congratulations}
               style={{
-                backgroundColor: "grey",
-                borderRadius: "0.5rem",
-                padding: "0.75rem 0.5rem",
-                width: "50%",
+                backgroundColor: 'grey',
+                borderRadius: '0.5rem',
+                padding: '0.75rem 0.5rem',
+                width: '50%',
               }}
             >
-              <p style={{ fontSize: "0.75rem" }}>Congratulations John!</p>
-              <p style={{ fontSize: "0.6rem" }}>Best Seller of the month</p>
-              <h2 style={{ fontSize: "1.25rem" }}>$89k</h2>
-              <div className={styles.john} style={{ fontSize: "0.6rem" }}>
+              <p style={{ fontSize: '0.75rem' }}>Congratulations John!</p>
+              <p style={{ fontSize: '0.6rem' }}>Best Seller of the month</p>
+              <h2 style={{ fontSize: '1.25rem' }}>$89k</h2>
+              <div className={styles.john} style={{ fontSize: '0.6rem' }}>
                 <p>You have done 57% more sale today</p>
               </div>
               <button id={styles.btn1}>View Sales</button>
@@ -271,68 +271,68 @@ export default function Sellers() {
         <div
           className={styles.newLatest}
           style={{
-            display: "flex",
-            flexDirection: "row",
-            marginTop: "25px",
+            display: 'flex',
+            flexDirection: 'row',
+            marginTop: '25px',
           }}
         >
           <div
             className={styles.chart}
             style={{
-              backgroundColor: "white",
-              width: "60%",
-              borderRadius: "1rem",
-              padding: "1rem",
-              marginRight: "24px",
+              backgroundColor: 'white',
+              width: '60%',
+              borderRadius: '1rem',
+              padding: '1rem',
+              marginRight: '24px',
             }}
           >
             <span
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItem: "centre",
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'centre',
               }}
             >
-              <p style={{ fontSize: "0.8rem", fontWeight: "bold" }}>
+              <p style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>
                 Lead Sales
               </p>
               <GrPowerForceShutdown
                 size={12}
                 style={{
-                  color: "black",
-                  right: "10",
-                  top: "0.5rem",
+                  color: 'black',
+                  right: '10',
+                  top: '0.5rem',
                 }}
               />
             </span>
             <hr></hr>
             <Image
-              src={require("../assets/SD Dashboard.png")}
+              src={require('../assets/SD Dashboard.png')}
               alt=""
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             />
           </div>
           <div
             className={styles.latestTicket}
             style={{
-              backgroundColor: "white",
-              width: "40%",
-              borderRadius: "1rem",
-              padding: "1.5rem",
+              backgroundColor: 'white',
+              width: '40%',
+              borderRadius: '1rem',
+              padding: '1.5rem',
             }}
           >
             <span
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItem: "centre",
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'centre',
               }}
             >
               <p
                 style={{
-                  fontSize: "0.8rem",
-                  fontWeight: "bold",
-                  margin: "10px",
+                  fontSize: '0.8rem',
+                  fontWeight: 'bold',
+                  margin: '10px',
                 }}
               >
                 Latest Tickets
@@ -341,57 +341,57 @@ export default function Sellers() {
               <GrPowerForceShutdown
                 size={12}
                 style={{
-                  color: "black",
-                  right: "0.5rem",
-                  top: "0.5rem",
+                  color: 'black',
+                  right: '0.5rem',
+                  top: '0.5rem',
                 }}
               />
             </span>
 
-            <hr style={{ margin: "20px" }}></hr>
+            <hr style={{ margin: '20px' }}></hr>
 
-            <p style={{ fontSize: "0.7rem" }}>
+            <p style={{ fontSize: '0.7rem' }}>
               Ticket
               <span
                 style={{
-                  fontWeight: "bold",
-                  marginTop: "20px",
-                  padding: "0.75rem",
-                  fontSize: "0.7rem",
+                  fontWeight: 'bold',
+                  marginTop: '20px',
+                  padding: '0.75rem',
+                  fontSize: '0.7rem',
                 }}
               >
                 #432182
               </span>
             </p>
-            <p style={{ fontSize: "0.7rem", marginBottom: "15px" }}>
+            <p style={{ fontSize: '0.7rem', marginBottom: '15px' }}>
               Send us the participant for the ticket
             </p>
             <hr></hr>
-            <p style={{ fontSize: "0.7rem" }}>
+            <p style={{ fontSize: '0.7rem' }}>
               Ticket
-              <span style={{ fontWeight: "bold", fontSize: "0.7rem" }}>
+              <span style={{ fontWeight: 'bold', fontSize: '0.7rem' }}>
                 #432123
               </span>
             </p>
-            <p style={{ fontSize: "0.7rem", marginTop: "10px" }}>
+            <p style={{ fontSize: '0.7rem', marginTop: '10px' }}>
               Show us your name in the ticket and follow us
             </p>
-            <hr style={{ margin: "10px" }}></hr>
-            <p style={{ fontSize: "0.7rem" }}>
+            <hr style={{ margin: '10px' }}></hr>
+            <p style={{ fontSize: '0.7rem' }}>
               Ticket
-              <span style={{ fontWeight: "bold", fontSize: "0.7rem" }}>
+              <span style={{ fontWeight: 'bold', fontSize: '0.7rem' }}>
                 #654327
               </span>
             </p>
-            <p style={{ fontSize: "0.7rem", marginTop: "10px" }}>
+            <p style={{ fontSize: '0.7rem', marginTop: '10px' }}>
               Buy more of the ticket and send to the hospital
             </p>
             <div
               style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "0.25rem",
-                alignItems: "center",
+                display: 'flex',
+                justifyContent: 'center',
+                marginTop: '0.25rem',
+                alignItems: 'center',
               }}
             >
               <IoIosArrowDropdown size={24} />
@@ -400,5 +400,5 @@ export default function Sellers() {
         </div>
       </div>
     </div>
-  );
+  )
 }
