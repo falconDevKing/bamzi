@@ -1,4 +1,4 @@
-export const success = (statusCode: number, data = {}, message = '') => {
+export const Success = (statusCode: number, data = {}, message = '') => {
   return {
     data,
     message,
@@ -6,7 +6,7 @@ export const success = (statusCode: number, data = {}, message = '') => {
   }
 }
 
-export const error = (statusCode: number, error = {}, message = '') => {
+export const Error = (statusCode: number, error = {}, message = '') => {
   // List of common HTTP request code
   const codes = [200, 201, 400, 401, 404, 403, 422, 500]
 
@@ -23,7 +23,7 @@ export const error = (statusCode: number, error = {}, message = '') => {
   }
 }
 
-export const validation = (errors = []) => {
+export const Validation = (errors = []) => {
   return {
     message: 'Validation errors',
     status: 422,
