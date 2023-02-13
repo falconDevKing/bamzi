@@ -1,38 +1,38 @@
-import React from "react";
-import Link from "next/link";
-import { IoIosWarning } from "react-icons/io";
-import Header from "../components/header";
-import Image from "next/image";
+import React from 'react'
+import Link from 'next/link'
+import { IoIosWarning } from 'react-icons/io'
+import Header from '../components/header'
+import Image from 'next/image'
 
 export default function Errorpage() {
   return (
     <div>
-      <div className={"w-full my-0 mx-auto h-screen bg-bluelight"}>
+      <div className={'my-0 mx-auto h-screen w-full bg-bluelight'}>
         <Header bg />
         <div
           className={
-            "flex lg:flex-row flex-col my-10 mx-auto lg:py-12 lg:px-20 sm:py-2 py-0 sm:px-6 px-0 justify-between items-center sm:mt-0 mt-16"
+            'my-10 mx-auto mt-16 flex flex-col items-center justify-between py-0 px-0 sm:mt-0 sm:py-2 sm:px-6 lg:flex-row lg:py-12 lg:px-20'
           }
         >
           <div
             className={
-              "lg:w-1/2 w-full lg:pl-16 pl-0 bg-contain bg-left bg-no-repeat lg:bg-errorbg bg-none"
+              'w-full bg-none bg-contain bg-left bg-no-repeat pl-0 lg:w-1/2 lg:bg-errorbg lg:pl-16'
             }
           >
             <div>
               <h1
                 className={
-                  "lg:text-right text-center text-3xl text-gray-500 mx-auto"
+                  'mx-auto text-center text-3xl text-gray-500 lg:text-right'
                 }
               >
                 Page Not Found
               </h1>
             </div>
 
-            <div className={"flex justify-center items-start text-[#f6da8b]"}>
+            <div className={'flex items-start justify-center text-[#f6da8b]'}>
               <Image
-                src={require("../assets/Cart404.png")}
-                className={"sm:w-[400px] w-[320px]"}
+                src={require('../assets/Cart404.png')}
+                className={'w-[320px] sm:w-[400px]'}
                 alt=""
               />
             </div>
@@ -40,16 +40,16 @@ export default function Errorpage() {
 
           <div
             className={
-              "lg:bg-errorbg bg-none bg-no-repeat bg-right bg-contain lg:w-1/2 w-full lg:pr-16 pr-0 lg:mt-0 mt-4 items-center mb-16"
+              'mt-4 mb-16 w-full items-center bg-none bg-contain bg-right bg-no-repeat pr-0 lg:mt-0 lg:w-1/2 lg:bg-errorbg lg:pr-16'
             }
           >
-            <div className={"flex flex-col text-gray-500 py-0 px-6"}>
-              <span className={"sm:text-base text-sm inline-block"}>
+            <div className={'flex flex-col py-0 px-6 text-gray-500'}>
+              <span className={'inline-block text-sm sm:text-base'}>
                 <IoIosWarning
                   size={24}
-                  color={"#f1a79c"}
-                  style={{ display: "inline-block" }}
-                />{" "}
+                  color={'#f1a79c'}
+                  style={{ display: 'inline-block' }}
+                />
                 OOPs!!! Looks like the page you are looking for is not available
                 or is missing, kindly contact us for any further problem.
               </span>
@@ -57,7 +57,7 @@ export default function Errorpage() {
               <Link href="/" className="p-0">
                 <button
                   className={
-                    "bg-primary text-white py-4 px-0 w-full sm:text-base text-sm text-center sm:font-bold font-normal mt-4 rounded-lg"
+                    'mt-4 w-full rounded-lg bg-primary py-4 px-0 text-center text-sm font-normal text-white sm:text-base sm:font-bold'
                   }
                 >
                   Go to Homepage
@@ -68,5 +68,5 @@ export default function Errorpage() {
         </div>
       </div>
     </div>
-  );
+  )
 }

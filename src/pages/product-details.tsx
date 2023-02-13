@@ -1,86 +1,86 @@
-import React, { useState } from "react";
-import { IoIosCart } from "react-icons/io";
-import { FaStoreAlt, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import Footer from "../components/footer";
-import Header from "../components/header";
-import Tab from "../components/tab";
-import RelatedProducts from "../components/relatedProducts";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useState } from 'react'
+import { IoIosCart } from 'react-icons/io'
+import { FaStoreAlt, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import Footer from '../components/footer'
+import Header from '../components/header'
+import Tab from '../components/tab'
+import RelatedProducts from '../components/relatedProducts'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function ProductDetails() {
   const products = [
     {
-      _id: "1",
-      title: "Apple Watch 2.0 Ipv4",
+      _id: '1',
+      title: 'Apple Watch 2.0 Ipv4',
       price: 399,
 
       views: [
-        require("../assets/apple-watch-img01.png"),
-        require("../assets/apple-phone-img01.png"),
-        require("../assets/apple-pods-img01.png"),
+        require('../assets/apple-watch-img01.png'),
+        require('../assets/apple-phone-img01.png'),
+        require('../assets/apple-pods-img01.png'),
       ],
       variants: {
         src: [
-          require("../assets/apple-watch-img01.png"),
-          require("../assets/apple-watch-img02.png"),
-          require("../assets/apple-watch-img03.png"),
+          require('../assets/apple-watch-img01.png'),
+          require('../assets/apple-watch-img02.png'),
+          require('../assets/apple-watch-img03.png'),
         ],
-        colors: ["grey", "red", "blue"],
+        colors: ['grey', 'red', 'blue'],
       },
 
-      sizes: ["XL", "XXL", "M"],
+      sizes: ['XL', 'XXL', 'M'],
       stock: 20,
-      brand: "Apple",
-      category: "Electronics",
-      subCategory: "Bands",
-      seller: "Evax Electronic Store",
+      brand: 'Apple',
+      category: 'Electronics',
+      subCategory: 'Bands',
+      seller: 'Evax Electronic Store',
       description: {
         content:
-          "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam adipisci rerum voluptate veniam ut perferendis laudantium vero perspiciatis blanditiis! Doloribus est fugiat veritatis quisquam dicta.",
-        image: require("../assets/apple-watch-desc.jpg"),
+          'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam adipisci rerum voluptate veniam ut perferendis laudantium vero perspiciatis blanditiis! Doloribus est fugiat veritatis quisquam dicta.',
+        image: require('../assets/apple-watch-desc.jpg'),
       },
       reviews: [
         {
-          name: "John Barnes",
-          avatar: require("../assets/avatar-1.jpg"),
+          name: 'John Barnes',
+          avatar: require('../assets/avatar-1.jpg'),
           content: "I'm happy with the product.",
-          date: "13/02/2021",
+          date: '13/02/2021',
           rating: 4,
         },
         {
-          name: "David Stone",
-          avatar: require("../assets/avatar-1.jpg"),
+          name: 'David Stone',
+          avatar: require('../assets/avatar-1.jpg'),
           content:
             "I've been using this product for a while now and it hasn't given me any issues.",
-          date: "13/02/2021",
+          date: '13/02/2021',
           rating: 3,
         },
         {
-          name: "Mira Long",
-          avatar: require("../assets/avatar-1.jpg"),
+          name: 'Mira Long',
+          avatar: require('../assets/avatar-1.jpg'),
           content:
-            "Quality product. I recommend this for any lover of this brand.",
-          date: "13/02/2021",
+            'Quality product. I recommend this for any lover of this brand.',
+          date: '13/02/2021',
           rating: 5,
         },
       ],
     },
-  ];
+  ]
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0)
 
-  const changeImg = (index) => {
-    setIndex(index);
-  };
+  const changeImg = (index: number) => {
+    setIndex(index)
+  }
 
   const prevView = () => {
-    setIndex(index === 0 ? products[0].views.length - 1 : index - 1);
-  };
+    setIndex(index === 0 ? products[0].views.length - 1 : index - 1)
+  }
 
   const nextView = () => {
-    setIndex(index === products[0].views.length - 1 ? 0 : index + 1);
-  };
+    setIndex(index === products[0].views.length - 1 ? 0 : index + 1)
+  }
 
   return (
     <div className="font-poppins">
@@ -88,35 +88,35 @@ export default function ProductDetails() {
       <div className="container py-6 px-8 lg:px-16">
         {products.map((product) => (
           <div key={product._id}>
-            <div className="flex my-5 space-x-8">
-              <div className="basis-1/2 flex flex-col">
+            <div className="my-5 flex space-x-8">
+              <div className="flex basis-1/2 flex-col">
                 <div className="flex items-start pt-4">
-                  <div className="basis-1/6 flex flex-col space-y-4">
+                  <div className="flex basis-1/6 flex-col space-y-4">
                     {product.views.map((img, index) => (
                       <div key={index} className="h-12 w-12">
                         <Image
                           src={img}
                           alt=""
-                          className="lg:w-3/4 w-full aspect-square block object-contain shadow rounded-md opacity-70 hover:opacity-100 focus:opacity-100 border border-gray-200 mb-2"
+                          className="mb-2 block aspect-square w-full rounded-md border border-gray-200 object-contain opacity-70 shadow hover:opacity-100 focus:opacity-100 lg:w-3/4"
                           role="button"
                           onClick={() => changeImg(index)}
                         />
                       </div>
                     ))}
                   </div>
-                  <div className="basis-4/6 p-8 h-[28rem] w-[28rem] self-center flex self-center justify-center">
+                  <div className="flex h-[28rem] w-[28rem] basis-4/6 justify-center self-center self-center p-8">
                     <Image src={product.views[index]} className="" alt="" />
                   </div>
                 </div>
-                <div className="flex space-x-2 mt-8 justify-end">
+                <div className="mt-8 flex justify-end space-x-2">
                   <button
-                    className="border border-gray-200 rounded-full p-2 shadow"
+                    className="rounded-full border border-gray-200 p-2 shadow"
                     onClick={prevView}
                   >
                     <FaChevronLeft />
                   </button>
                   <button
-                    className="border border-gray-200 rounded-full p-2 shadow"
+                    className="rounded-full border border-gray-200 p-2 shadow"
                     onClick={nextView}
                   >
                     <FaChevronRight />
@@ -125,22 +125,22 @@ export default function ProductDetails() {
               </div>
 
               <div className="basis-1/2">
-                <nav className="flex mb-4" aria-label="breadcrumb">
+                <nav className="mb-4 flex" aria-label="breadcrumb">
                   <ol className="inline-flex items-center space-x-1 md:space-x-3">
                     <li className="self-center">
                       <Link
                         href="#!"
-                        className="text-gray-700 hover:text-gray-900 font-medium"
+                        className="font-medium text-gray-700 hover:text-gray-900"
                       >
                         {product.category}
                       </Link>
                     </li>
                     <li>
                       <div className="inline-flex items-center pt-1">
-                        <FaChevronRight className="mr-1 md:mr-3 text-gray-400" />
+                        <FaChevronRight className="mr-1 text-gray-400 md:mr-3" />
                         <Link
                           href="#!"
-                          className="text-gray-700 hover:text-gray-900 text-sm font-medium"
+                          className="text-sm font-medium text-gray-700 hover:text-gray-900"
                         >
                           {product.brand}
                         </Link>
@@ -148,8 +148,8 @@ export default function ProductDetails() {
                     </li>
                     <li aria-current="page">
                       <div className="inline-flex items-center pt-1">
-                        <FaChevronRight className="mr-1 md:mr-3 text-gray-400" />
-                        <span className="text-gray-400 text-sm font-medium">
+                        <FaChevronRight className="mr-1 text-gray-400 md:mr-3" />
+                        <span className="text-sm font-medium text-gray-400">
                           {product.subCategory}
                         </span>
                       </div>
@@ -157,49 +157,49 @@ export default function ProductDetails() {
                   </ol>
                 </nav>
                 {product.stock ? (
-                  <span className="bg-primary text-center text-white py-2 px-4">
+                  <span className="bg-primary py-2 px-4 text-center text-white">
                     IN STOCK
                   </span>
                 ) : (
-                  <span className="bg-gray-700 text-center text-white py-2 px-4">
+                  <span className="bg-gray-700 py-2 px-4 text-center text-white">
                     OUT OF STOCK
                   </span>
                 )}
-                <h4 className="text-xl font-semibold mt-3 text-primary">
+                <h4 className="mt-3 text-xl font-semibold text-primary">
                   {product.title}
                 </h4>
-                <h2 className="text-2xl font-semibold mt-1 text-secondary">{`$${product.price}`}</h2>
-                <div className="flex mt-2 space-x-6">
+                <h2 className="mt-1 text-2xl font-semibold text-secondary">{`$${product.price}`}</h2>
+                <div className="mt-2 flex space-x-6">
                   {product.variants.src.map((img, index) => (
                     <div key={index} className="w-20">
                       <Image
                         src={img}
                         alt=""
-                        className="w-16 h-auto block aspect-square object-contain shadow-sm rounded-md opacity-70 hover:opacity-100 focus:opacity-100 border border-x-gray-200 mr-2"
+                        className="mr-2 block aspect-square h-auto w-16 rounded-md border border-x-gray-200 object-contain opacity-70 shadow-sm hover:opacity-100 focus:opacity-100"
                       />
                     </div>
                   ))}
                 </div>
-                <div className="lg:flex lg:space-x-3 mt-2">
+                <div className="mt-2 lg:flex lg:space-x-3">
                   <div className="flex">
-                    <span className="font-bold text-primary mr-2 py-1">
+                    <span className="mr-2 py-1 font-bold text-primary">
                       Color
                     </span>
                     {product.variants.colors.map((color, index) => (
                       <button
-                        className="w-8 h-8 border border-gray-200 rounded-md mr-1"
+                        className="mr-1 h-8 w-8 rounded-md border border-gray-200"
                         style={{ background: color }}
                         key={index}
                       ></button>
                     ))}
                   </div>
-                  <div className="flex mt-2 lg:mt-0">
-                    <span className="font-bold text-primary mr-2 py-1">
+                  <div className="mt-2 flex lg:mt-0">
+                    <span className="mr-2 py-1 font-bold text-primary">
                       Size
                     </span>
                     {product.sizes.map((size, index) => (
                       <span
-                        className="font-bold text-gray-500 text-center py-1 px-4 bg-gray-200 rounded-2xl mr-2"
+                        className="mr-2 rounded-2xl bg-gray-200 py-1 px-4 text-center font-bold text-gray-500"
                         key={index}
                         role="button"
                       >
@@ -208,12 +208,12 @@ export default function ProductDetails() {
                     ))}
                   </div>
                 </div>
-                <button className="bg-primary rounded-md my-3 text-center text-white py-3 px-10 flex space-x-1">
-                  <IoIosCart className="w-6 h-6" />
+                <button className="my-3 flex space-x-1 rounded-md bg-primary py-3 px-10 text-center text-white">
+                  <IoIosCart className="h-6 w-6" />
                   <span>Add to Cart</span>
                 </button>
-                <span className="text-gray-400 flex space-x-1">
-                  <FaStoreAlt className="w-6 h-6" />
+                <span className="flex space-x-1 text-gray-400">
+                  <FaStoreAlt className="h-6 w-6" />
                   <span>{product.seller}</span>
                 </span>
               </div>
@@ -225,5 +225,5 @@ export default function ProductDetails() {
       <RelatedProducts />
       <Footer bgColor="bg-primary" btnColor="bg-secondary" />
     </div>
-  );
+  )
 }

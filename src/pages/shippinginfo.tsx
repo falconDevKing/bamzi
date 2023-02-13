@@ -1,28 +1,28 @@
-import React from "react";
-import Header from "../components/header";
-import UserBody from "../components/user/UserBody";
-import UserSidebar from "../components/user/UserSidebar";
+import React from 'react'
+import Header from '../components/header'
+import UserBody from '../components/user/UserBody'
+import UserSidebar from '../components/user/UserSidebar'
 
 export default function Shippinginfo() {
   return (
-    <div className="font-poppins min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 font-poppins">
       <Header pryNav="user" secNav="user" />
 
       <UserBody>
         <UserSidebar page="shipping" />
 
-        <div className="flex justify-between bg-white lg:w-9/12 w-full lg:py-12 lg:px-16 md:py-6 md:px-8 py-3 px-4 md:rounded-r-xl shadow md:flex-row flex-col">
-          <div className="bg-white py-5 mx-2 text-sm">
+        <div className="flex w-full flex-col justify-between bg-white py-3 px-4 shadow md:flex-row md:rounded-r-xl md:py-6 md:px-8 lg:w-9/12 lg:py-12 lg:px-16">
+          <div className="mx-2 bg-white py-5 text-sm">
             <form method="get" action="login.php">
               <h6>Shipping Info</h6>
 
               <div className="flex flex-col">
-                <div className={"flex w-full md:flex-row flex-col"}>
+                <div className={'flex w-full flex-col md:flex-row'}>
                   <input
                     type="text"
                     name="name"
                     className={
-                      "py-3 px-6 rounded-md md:w-1/2 w-full mr-3 border border-solid border-gray-400"
+                      'mr-3 w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-1/2'
                     }
                     placeholder="Name"
                   />
@@ -30,7 +30,7 @@ export default function Shippinginfo() {
                     type="number"
                     name="number"
                     className={
-                      "py-3 px-6 rounded-md md:w-1/2 w-full border border-solid border-gray-400"
+                      'w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-1/2'
                     }
                     placeholder="+234     Phone Number"
                   />
@@ -38,12 +38,12 @@ export default function Shippinginfo() {
 
                 <h6>Address</h6>
 
-                <div className={"flex w-full md:flex-row flex-col"}>
+                <div className={'flex w-full flex-col md:flex-row'}>
                   <input
                     type="text"
                     name="address"
                     className={
-                      "py-3 px-6 rounded-md md:w-3/4 w-full mr-2 border border-solid border-gray-400"
+                      'mr-2 w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-3/4'
                     }
                     placeholder="Street Address/Apartment Unit"
                   />
@@ -51,7 +51,7 @@ export default function Shippinginfo() {
                     type="text"
                     name="state"
                     className={
-                      "py-3 px-6 rounded-md md:w-2/5 w-full mr-2 border border-solid border-gray-400"
+                      'mr-2 w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-2/5'
                     }
                     placeholder="State/Region"
                   />
@@ -59,17 +59,17 @@ export default function Shippinginfo() {
                     type="text"
                     name="city"
                     className={
-                      "py-3 px-6 rounded-md md:w-1/4 w-full border border-solid border-gray-400"
+                      'w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-1/4'
                     }
                     placeholder="City"
                   />
                 </div>
-                <div className={"flex mt-2 w-full md:w-4/5"}>
+                <div className={'mt-2 flex w-full md:w-4/5'}>
                   <input
                     type="text"
                     name="country"
                     className={
-                      "py-3 px-5 rounded-md w-1/2 mr-2 border border-solid border-gray-400"
+                      'mr-2 w-1/2 rounded-md border border-solid border-gray-400 py-3 px-5'
                     }
                     placeholder="Nigeria"
                   />
@@ -77,19 +77,19 @@ export default function Shippinginfo() {
                     type="text"
                     name="Zip Code"
                     className={
-                      "py-3 px-6 rounded-md md:w-1/2 w-full border border-solid border-gray-400"
+                      'w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-1/2'
                     }
                     placeholder="Zip Code"
                   />
                 </div>
 
-                <div className={"flex justify-between items-center mt-6"}>
+                <div className={'mt-6 flex items-center justify-between'}>
                   <button
                     type="submit"
                     className={
-                      "py-3 px-6 rounded-md w-full md:w-1/2 bg-primary text-white md:text-base text-sm"
+                      'w-full rounded-md bg-primary py-3 px-6 text-sm text-white md:w-1/2 md:text-base'
                     }
-                    style={{ backgroundColor: "#000033" }}
+                    style={{ backgroundColor: '#000033' }}
                   >
                     Save and Continue
                   </button>
@@ -100,5 +100,5 @@ export default function Shippinginfo() {
         </div>
       </UserBody>
     </div>
-  );
+  )
 }

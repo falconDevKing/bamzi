@@ -1,11 +1,11 @@
-import React from "react";
-import Header from "../components/header";
-import Section from "../components/Section";
-import CarouselSlider from "../components/CarouselSlider";
-import Section2 from "../components/Section2";
-import FeaturedProducts from "../components/FeaturedProducts";
-import FeaturedBottom from "../components/FeaturedBottom";
-import Footer from "../components/footer";
+import React from 'react'
+import Header from '../components/header'
+import Section from '../components/Section'
+import CarouselSlider from '../components/CarouselSlider'
+import Section2 from '../components/Section2'
+import FeaturedProducts from '../components/FeaturedProducts'
+import FeaturedBottom from '../components/FeaturedBottom'
+import Footer from '../components/footer'
 
 const HomePage = () => {
   return (
@@ -20,13 +20,13 @@ const HomePage = () => {
         <FeaturedProducts />
         <FeaturedBottom />
         <Footer
-          bgColor={"bg-primary"}
-          bgC={"bg-bgcolors"}
-          btnColor={"bg-secondary"}
+          bgColor={'bg-primary'}
+          bgC={'bg-bgcolors'}
+          btnColor={'bg-secondary'}
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

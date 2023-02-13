@@ -1,5 +1,6 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+import Mongoose from 'mongoose'
+
+const Schema = Mongoose.Schema
 
 const reservationSchema = new Schema(
   {
@@ -23,5 +24,6 @@ const reservationSchema = new Schema(
   { timestamps: true }
 )
 
-const Reservation = mongoose.model("Reservation", reservationSchema)
-module.exports = Reservation
+const Reservation = Mongoose.model('Reservation', reservationSchema)
+
+export default Reservation

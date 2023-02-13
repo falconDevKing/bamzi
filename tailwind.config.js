@@ -40,7 +40,7 @@ module.exports = {
         store: 'url(../assets/bg-seller-store.png)',
         storeHeader: 'url(../assets/bg-store-header.png)',
         shop: 'url(../assets/bg-shop.jpg)',
-        shapes: 'url(../assets/shapes.png)',
+        shapes: 'url(../assets/Shapes.png)',
         exclusion: 'url(../assets/exclusion.png)',
         errorbg: 'url(../assets/Group-11551.png)',
         split: 'linear-gradient(to right, #e5e7eb 50%, white 50%)',

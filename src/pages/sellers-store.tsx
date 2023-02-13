@@ -16,12 +16,12 @@ import Image from 'next/image'
 
 export default function SellersStore() {
   const [tab, setTab] = useState(0)
-  const [products, setProducts] = useState([])
-  const [showModal, setShowModal] = useState(false)
+  const [products, setProducts] = useState<any[]>([])
+  const [showModal, setShowModal] = useState<boolean>(false)
 
   const userID = '6234d264df9d2322e00785ef'
 
-  const toggleTab = (index) => {
+  const toggleTab = (index: number) => {
     setTab(index)
   }
 
@@ -38,7 +38,7 @@ export default function SellersStore() {
     fetchData()
   }, [])
 
-  const addToWishlist = async (productId) => {
+  const addToWishlist = async (productId: string) => {
     const res = await axios.post('http://localhost:4000/bamzi/wishlist/add', {
       user: userID,
       productId: productId,
@@ -46,7 +46,7 @@ export default function SellersStore() {
     console.log(res)
   }
 
-  const addToCart = async (productId) => {
+  const addToCart = async (productId: string) => {
     const res = await axios.post('http://localhost:4000/bamzi/cart/add', {
       user: userID,
       productId: productId,

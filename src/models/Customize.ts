@@ -1,13 +1,14 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
-const ObjectID = mongoose.Schema.Types.ObjectId;
+import Mongoose from 'mongoose'
+
+const Schema = Mongoose.Schema
+const ObjectID = Mongoose.Schema.Types.ObjectId
 
 const customizeSchema = new Schema(
   {
     user: {
       type: ObjectID,
       required: true,
-      ref: "User",
+      ref: 'User',
     },
     storeName: {
       type: String,
@@ -44,10 +45,11 @@ const customizeSchema = new Schema(
     backgroundImage: {
       type: String,
       required: true,
-    }
+    },
   },
   { timestamps: true }
 )
 
-const Customize = mongoose.model("Customize", customizeSchema)
-module.exports = Customize
+const Customize = Mongoose.model('Customize', customizeSchema)
+
+export default Customize

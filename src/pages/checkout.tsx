@@ -1,25 +1,25 @@
-import React from "react";
-import checkout from "../styles/checkout.module.css";
-import Header from "../components/header";
-import Image from "next/image";
-import { BsFillShieldFill, BsCreditCardFill } from "react-icons/bs";
-import { BiRecycle } from "react-icons/bi";
+import React from 'react'
+import checkout from '../styles/checkout.module.css'
+import Header from '../components/header'
+import Image from 'next/image'
+import { BsFillShieldFill, BsCreditCardFill } from 'react-icons/bs'
+import { BiRecycle } from 'react-icons/bi'
 
 export default function Checkout() {
   return (
     <div>
-      <div className={"bg-fadewhite w-full my-0 mx-auto"}>
+      <div className={'my-0 mx-auto w-full bg-fadewhite'}>
         <Header pryNav="user" secNav="user" />
 
         <div
           className={
-            "flex lg:flex-row flex-col md:w-full py-5 lg:px-16 md:px-12 px-0 justify-center items-center lg:justify-between lg:items-start lg:space-x-8 mt-5"
+            'mt-5 flex flex-col items-center justify-center py-5 px-0 md:w-full md:px-12 lg:flex-row lg:items-start lg:justify-between lg:space-x-8 lg:px-16'
           }
         >
-          <div className={"lg:w-2/3 md:3/4 w-full md:m-0"}>
+          <div className={'md:3/4 w-full md:m-0 lg:w-2/3'}>
             <div
               className={
-                "py-4 px-4 border-0 border-solid bg-white rounded-md font-bold"
+                'rounded-md border-0 border-solid bg-white py-4 px-4 font-bold'
               }
             >
               Checkout
@@ -27,12 +27,12 @@ export default function Checkout() {
 
             <div
               className={
-                "flex items-center justify-between py-0.5 px-4 mt-2 border-0 border-solid bg-white rounded-md font-bold"
+                'mt-2 flex items-center justify-between rounded-md border-0 border-solid bg-white py-0.5 px-4 font-bold'
               }
             >
               <h4>Shipping Information</h4>
               <button
-                className={"p-4 bg-white border-0 cursor-pointer text-2xl"}
+                className={'cursor-pointer border-0 bg-white p-4 text-2xl'}
               >
                 +
               </button>
@@ -40,18 +40,18 @@ export default function Checkout() {
 
             <div
               className={
-                "bg-white rounded-md border-0 py-4 px-4 mt-2 text-base"
+                'mt-2 rounded-md border-0 bg-white py-4 px-4 text-base'
               }
             >
               <form method="get" action="">
                 <h6>Basic Info</h6>
 
-                <div className={"flex w-full md:flex-row flex-col"}>
+                <div className={'flex w-full flex-col md:flex-row'}>
                   <input
                     type="text"
                     name="name"
                     className={
-                      "py-3 px-6 rounded-md md:w-1/2 w-full mr-3 border border-solid border-gray-400"
+                      'mr-3 w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-1/2'
                     }
                     placeholder="Name"
                   />
@@ -59,7 +59,7 @@ export default function Checkout() {
                     type="number"
                     name="number"
                     className={
-                      "py-3 px-6 rounded-md md:w-1/2 w-full border border-solid border-gray-400"
+                      'w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-1/2'
                     }
                     placeholder="+234     Phone Number"
                   />
@@ -67,12 +67,12 @@ export default function Checkout() {
 
                 <h6>Address</h6>
 
-                <div className={"flex w-full md:flex-row flex-col"}>
+                <div className={'flex w-full flex-col md:flex-row'}>
                   <input
                     type="text"
                     name="address"
                     className={
-                      "py-3 px-6 rounded-md md:w-2/5 w-full mr-2 border border-solid border-gray-400"
+                      'mr-2 w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-2/5'
                     }
                     placeholder="Street Address/Apartment Unit"
                   />
@@ -80,7 +80,7 @@ export default function Checkout() {
                     type="text"
                     name="state"
                     className={
-                      "py-3 px-6 rounded-md md:w-1/3 w-full mr-2 border border-solid border-gray-400"
+                      'mr-2 w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-1/3'
                     }
                     placeholder="State/Region"
                   />
@@ -88,17 +88,17 @@ export default function Checkout() {
                     type="text"
                     name="city"
                     className={
-                      "py-3 px-6 rounded-md md:w-1/4 w-full border border-solid border-gray-400"
+                      'w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-1/4'
                     }
                     placeholder="City"
                   />
                 </div>
-                <div className={"flex mt-2 w-full md:w-4/5"}>
+                <div className={'mt-2 flex w-full md:w-4/5'}>
                   <input
                     type="text"
                     name="country"
                     className={
-                      "py-3 px-6 rounded-md w-1/2 mr-2 border border-solid border-gray-400"
+                      'mr-2 w-1/2 rounded-md border border-solid border-gray-400 py-3 px-6'
                     }
                     placeholder="Nigeria"
                   />
@@ -106,22 +106,22 @@ export default function Checkout() {
                     type="text"
                     name="Zip Code"
                     className={
-                      "py-3 px-6 rounded-md md:w-1/2 w-full border border-solid border-gray-400"
+                      'w-full rounded-md border border-solid border-gray-400 py-3 px-6 md:w-1/2'
                     }
                     placeholder="Zip Code"
                   />
                 </div>
-                <div className={"flex justify-between items-center mt-6"}>
+                <div className={'mt-6 flex items-center justify-between'}>
                   <button
                     type="submit"
                     className={
-                      "py-3 px-6 rounded-md w-1/2 bg-primary text-white md:text-base text-sm"
+                      'w-1/2 rounded-md bg-primary py-3 px-6 text-sm text-white md:text-base'
                     }
-                    style={{ backgroundColor: "#000033" }}
+                    style={{ backgroundColor: '#000033' }}
                   >
                     Save and Continue
                   </button>
-                  <div className={"flex items-center space-x-2"}>
+                  <div className={'flex items-center space-x-2'}>
                     <input type="checkbox" className={checkout.checkbox} />
                     <label>Set as default</label>
                   </div>
@@ -132,7 +132,7 @@ export default function Checkout() {
             <div className={checkout.payment}>
               <div
                 className={
-                  "py-4 px-4 mt-8 border-0 border-solid bg-white rounded-md font-bold"
+                  'mt-8 rounded-md border-0 border-solid bg-white py-4 px-4 font-bold'
                 }
               >
                 Payment Method
@@ -140,30 +140,30 @@ export default function Checkout() {
 
               <div
                 className={
-                  "flex py-7 px-4 mt-1 border-0 border-solid bg-white rounded-md font-bold space-x-4 justify-evenly w-full"
+                  'mt-1 flex w-full justify-evenly space-x-4 rounded-md border-0 border-solid bg-white py-7 px-4 font-bold'
                 }
               >
                 <div>
                   <Image
-                    src={require("../assets/D4a-image9.png")}
-                    width={"60"}
-                    height={"60"}
+                    src={require('../assets/D4a-image9.png')}
+                    width={'60'}
+                    height={'60'}
                     alt=""
                   />
                 </div>
                 <div>
                   <Image
-                    src={require("../assets/M2-image10.png")}
-                    width={"60"}
-                    height={"60"}
+                    src={require('../assets/M2-image10.png')}
+                    width={'60'}
+                    height={'60'}
                     alt=""
                   />
                 </div>
                 <div>
                   <Image
-                    src={require("../assets/GooglePay.png")}
-                    width={"60"}
-                    height={"60"}
+                    src={require('../assets/GooglePay.png')}
+                    width={'60'}
+                    height={'60'}
                     alt=""
                   />
                 </div>
@@ -172,7 +172,7 @@ export default function Checkout() {
 
             <div
               className={
-                "py-4 px-4 mt-8 mb-16 border-0 border-solid bg-white rounded-md font-bold"
+                'mt-8 mb-16 rounded-md border-0 border-solid bg-white py-4 px-4 font-bold'
               }
             >
               Shopping Summary (4)
@@ -181,61 +181,61 @@ export default function Checkout() {
 
           <div
             className={
-              "w-full lg:w-1/3 md:w-1/2 lg:mt-0 py-0 lg:px-6 mt-6 px-0"
+              'mt-6 w-full py-0 px-0 md:w-1/2 lg:mt-0 lg:w-1/3 lg:px-6'
             }
           >
-            <div className={"bg-white rounded-t-lg shadow-sm"}>
+            <div className={'rounded-t-lg bg-white shadow-sm'}>
               <div className={checkout.order}>
                 <div
-                  className={"font-bold font text-lg pb-2.5 pl-5 pt-5 ml-0.5"}
+                  className={'font ml-0.5 pb-2.5 pl-5 pt-5 text-lg font-bold'}
                 >
                   Order Summary
                 </div>
 
-                <div className={"flex justify-between text-gray-500"}>
-                  <span className={"pl-5"}>Shipping fee</span>
-                  <span className={"py-0 px-5"}>$10.70</span>
+                <div className={'flex justify-between text-gray-500'}>
+                  <span className={'pl-5'}>Shipping fee</span>
+                  <span className={'py-0 px-5'}>$10.70</span>
                 </div>
               </div>
 
-              <div className={"flex justify-between text-gray-500"}>
-                <span className={"px-5"}>Sub total</span>
-                <span className={"py-0 px-5"}>$19.00</span>
+              <div className={'flex justify-between text-gray-500'}>
+                <span className={'px-5'}>Sub total</span>
+                <span className={'py-0 px-5'}>$19.00</span>
               </div>
 
               <div
                 className={
-                  "flex items-center justify-between my-2.5 mx-0 py-0 px-5"
+                  'my-2.5 mx-0 flex items-center justify-between py-0 px-5'
                 }
               >
                 <input
                   type="text"
                   className={
-                    "rounded-md py-1.5 px-2 border border-solid border-lightpink w-1/2 text-sm"
+                    'w-1/2 rounded-md border border-solid border-lightpink py-1.5 px-2 text-sm'
                   }
                   placeholder="Coupon Code"
                 />
-                <div className={"text-colorange flex items-center"}>
+                <div className={'flex items-center text-colorange'}>
                   <i className="fas fa-gift"></i>
-                  <span className={"text-colorange ml-1.5"}>My Gifts</span>
+                  <span className={'ml-1.5 text-colorange'}>My Gifts</span>
                 </div>
               </div>
 
               <div
                 className={
-                  "flex justify-between py-2.5 pr-0 pl-5 font-semibold border-t border-gray-500 border-solid"
+                  'flex justify-between border-t border-solid border-gray-500 py-2.5 pr-0 pl-5 font-semibold'
                 }
               >
-                Total <span className={"py-0 px-5"}>$0.00</span>
+                Total <span className={'py-0 px-5'}>$0.00</span>
               </div>
 
-              <div className={"pt-0 w-auto"}>
+              <div className={'w-auto pt-0'}>
                 <button
                   type="submit"
                   className={
-                    "bg-blueshade text-white justify-center border-0 w-full py-2 px-6"
+                    'w-full justify-center border-0 bg-blueshade py-2 px-6 text-white'
                   }
-                  style={{ backgroundColor: "#000033" }}
+                  style={{ backgroundColor: '#000033' }}
                 >
                   Proceed
                 </button>
@@ -244,25 +244,25 @@ export default function Checkout() {
 
             <div
               className={
-                "bg-lightgrey rounded-xl w-auto border-2 border-solid border-white text-center mt-[30px]"
+                'mt-[30px] w-auto rounded-xl border-2 border-solid border-white bg-lightgrey text-center'
               }
             >
-              <div className={"text-green pt-[15px]"}>SECURED PAY</div>
+              <div className={'pt-[15px] text-green'}>SECURED PAY</div>
 
-              <div className={"text-gray-400 text-xs py-[15px] px-5"}>
+              <div className={'py-[15px] px-5 text-xs text-gray-400'}>
                 Every Payments are secured with Bamzi and additional security is
                 ensured with Money Gauranss.
               </div>
 
-              <div className={"flex justify-center py-2.5 px-0"}>
-                <BsFillShieldFill className="w-[10%] h-1/5 p-1.5" />
-                <BiRecycle className="w-[10%] h-1/5 p-1.5" />
-                <BsCreditCardFill className="w-[10%] h-1/5 p-1.5" />
+              <div className={'flex justify-center py-2.5 px-0'}>
+                <BsFillShieldFill className="h-1/5 w-[10%] p-1.5" />
+                <BiRecycle className="h-1/5 w-[10%] p-1.5" />
+                <BsCreditCardFill className="h-1/5 w-[10%] p-1.5" />
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }

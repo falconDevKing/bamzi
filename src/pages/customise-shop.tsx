@@ -1,93 +1,99 @@
-import React, { useState } from "react";
-import axios from "axios";
-import Sidebar from "../components/sidebar";
-import SellersHeader from "../components/SellersHeader";
-import Image from "next/image";
-import { FiBox } from "react-icons/fi";
-import { BsPaletteFill, BsStack } from "react-icons/bs";
+import React, { useState, ChangeEvent } from 'react'
+import axios from 'axios'
+import Sidebar from '../components/sidebar'
+import SellersHeader from '../components/SellersHeader'
+import Image from 'next/image'
+import { FiBox } from 'react-icons/fi'
+import { BsPaletteFill, BsStack } from 'react-icons/bs'
 
 export default function CustomiseShop() {
-  const [showSidebar, setShowSidebar] = useState(false);
-  const [image, setImage] = useState("");
-  const [bgImage, setBgImage] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [showSidebar, setShowSidebar] = useState<boolean>(false)
+  const [image, setImage] = useState<string>('')
+  const [bgImage, setBgImage] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(true)
 
-  const uploadImage = (e) => {
-    const files = e.target.files[0];
-    const formData = new FormData();
-    formData.append("upload_preset", "bamzi_image");
-    formData.append("file", files);
-
-    axios
-      .post("https://api.cloudinary.com/v1_1/bamzi/image/upload", formData)
-      .then((res) => {
-        console.log(res);
-        setImage(res.data.secure_url);
-        setLoading(false);
-      })
-
-      .catch((err) => console.log(err));
-  };
-
-  const uploadBgImage = (e) => {
-    const files = e.target.files[0];
-    const formData = new FormData();
-    formData.append("upload_preset", "bamzi_image");
-    formData.append("file", files);
-    setLoading(true);
+  const uploadImage = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return
+    }
+    const files = e.target.files[0] ?? ''
+    const formData = new FormData()
+    formData.append('upload_preset', 'bamzi_image')
+    formData.append('file', files)
 
     axios
-      .post("https://api.cloudinary.com/v1_1/bamzi/image/upload", formData)
+      .post('https://api.cloudinary.com/v1_1/bamzi/image/upload', formData)
       .then((res) => {
-        console.log(res);
-        setBgImage(res.data.secure_url);
-        setLoading(false);
+        console.log(res)
+        setImage(res.data.secure_url)
+        setLoading(false)
       })
 
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  }
+
+  const uploadBgImage = (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return
+    }
+    const files = e.target.files[0]
+    const formData = new FormData()
+    formData.append('upload_preset', 'bamzi_image')
+    formData.append('file', files)
+    setLoading(true)
+
+    axios
+      .post('https://api.cloudinary.com/v1_1/bamzi/image/upload', formData)
+      .then((res) => {
+        console.log(res)
+        setBgImage(res.data.secure_url)
+        setLoading(false)
+      })
+
+      .catch((err) => console.log(err))
+  }
   return (
-    <div className="font-poppins lg:grid lg:grid-cols-6  min-h-screen relative">
+    <div className="relative min-h-screen font-poppins  lg:grid lg:grid-cols-6">
       <Sidebar showSidebar={showSidebar} page="customise-shop" />
 
-      <div className="col-span-5 bg-gray-100 px-6 py-3 lg:px-16 sm:py-8">
+      <div className="col-span-5 bg-gray-100 px-6 py-3 sm:py-8 lg:px-16">
         <SellersHeader
           setShowSidebar={setShowSidebar}
           showSidebar={showSidebar}
         />
 
-        <div className="flex mt-4 py-4 w-full items-center justify-between">
+        <div className="mt-4 flex w-full items-center justify-between py-4">
           <span className="flex space-x-2 text-primary">
             <FiBox size={32} />
             <p className="text-lg font-semibold text-black">Customise Shop</p>
           </span>
-          <button className="bg-primary text-white py-2 w-4/12 rounded-lg text-center">
+          <button className="w-4/12 rounded-lg bg-primary py-2 text-center text-white">
             Save
           </button>
         </div>
 
-        <div className="flex md:flex-row flex-col py-4 md:space-x-4 md:space-y-0 space-y-4">
+        <div className="flex flex-col space-y-4 py-4 md:flex-row md:space-x-4 md:space-y-0">
           {/** store info */}
-          <div className="md:w-8/12 w-full space-y-2">
-            <div className="bg-white p-4 rounded font-semibold shadow">
+          <div className="w-full space-y-2 md:w-8/12">
+            <div className="rounded bg-white p-4 font-semibold shadow">
               Store Info
             </div>
 
-            <div className="bg-white p-4 space-y-4 rounded shadow">
+            <div className="space-y-4 rounded bg-white p-4 shadow">
               <input
                 type="text"
-                className="px-4 py-2 border border-primary rounded-lg lg:w-8/12 w-full placeholder:text-gray-400 placeholder:text-sm"
+                className="w-full rounded-lg border border-primary px-4 py-2 placeholder:text-sm placeholder:text-gray-400 lg:w-8/12"
                 placeholder="Store Name"
                 autoComplete=""
               />
 
               <div className="flex space-x-4">
                 <textarea
-                  className="px-4 py-2 border border-primary rounded-lg lg:w-8/12 w-full placeholder:text-gray-400 placeholder:text-sm"
-                  rows="4"
+                  className="w-full rounded-lg border border-primary px-4 py-2 placeholder:text-sm placeholder:text-gray-400 lg:w-8/12"
+                  rows={4}
                   placeholder="Store Description Max (40)"
                 ></textarea>
-                <p className="hidden lg:block w-3/12 italic text-sm">
+                <p className="hidden w-3/12 text-sm italic lg:block">
                   This is a short description of what your store offers be
                   short, precise and brief as this is what customers would see.
                 </p>
@@ -95,40 +101,40 @@ export default function CustomiseShop() {
 
               <input
                 type="text"
-                className="px-4 py-2 border border-primary rounded-lg lg:w-8/12 w-full placeholder:text-gray-400 placeholder:text-sm"
+                className="w-full rounded-lg border border-primary px-4 py-2 placeholder:text-sm placeholder:text-gray-400 lg:w-8/12"
                 placeholder="Store full legal address"
               />
 
-              <div className="lg:w-8/12 w-full flex space-x-2">
-                <div className="w-1/2 px-4 py-2 border border-primary rounded-lg">
-                  <span className="flex items-center sm:justify-start justify-center space-x-2">
+              <div className="flex w-full space-x-2 lg:w-8/12">
+                <div className="w-1/2 rounded-lg border border-primary px-4 py-2">
+                  <span className="flex items-center justify-center space-x-2 sm:justify-start">
                     <Image
-                      src={require("../assets/nigeria.png")}
+                      src={require('../assets/nigeria.png')}
                       alt=""
-                      className="w-6 h-3 sm:mt-0 mt-1"
+                      className="mt-1 h-3 w-6 sm:mt-0"
                       width={24}
                       height={16}
                     />
-                    <p className="text-sm hidden sm:block">Nigeria</p>
+                    <p className="hidden text-sm sm:block">Nigeria</p>
                   </span>
                 </div>
                 <input
                   type="text"
-                  className="w-1/2 px-4 py-2 border border-primary rounded-lg placeholder:text-gray-400 placeholder:text-sm"
+                  className="w-1/2 rounded-lg border border-primary px-4 py-2 placeholder:text-sm placeholder:text-gray-400"
                   placeholder="State"
                 />
               </div>
 
               <input
                 type="text"
-                className="px-4 py-2 border border-primary rounded-lg lg:w-8/12 w-full placeholder:text-gray-400 placeholder:text-sm"
+                className="w-full rounded-lg border border-primary px-4 py-2 placeholder:text-sm placeholder:text-gray-400 lg:w-8/12"
                 placeholder="Business Contact"
                 autoComplete=""
               />
 
               <input
                 type="text"
-                className="px-4 py-2 border border-primary rounded-lg lg:w-8/12 w-full placeholder:text-gray-400 placeholder:text-sm"
+                className="w-full rounded-lg border border-primary px-4 py-2 placeholder:text-sm placeholder:text-gray-400 lg:w-8/12"
                 placeholder="Store Name"
                 autoComplete="Additional Info"
               />
@@ -136,14 +142,14 @@ export default function CustomiseShop() {
           </div>
 
           {/** store appearance */}
-          <div className="bg-white md:w-4/12 w-full p-4 space-y-5 rounded shadow">
-            <p className="font-semibold text-lg text-black py-2">
+          <div className="w-full space-y-5 rounded bg-white p-4 shadow md:w-4/12">
+            <p className="py-2 text-lg font-semibold text-black">
               Store Appearance
             </p>
 
             <div className="flex items-center">
               <label className="text-md text-gray-700">Upload Logo</label>
-              <BsStack className="text-xl" style={{ paddingLeft: "8px" }} />
+              <BsStack className="text-xl" style={{ paddingLeft: '8px' }} />
             </div>
             <input
               type="file"
@@ -155,7 +161,7 @@ export default function CustomiseShop() {
               <label className="text-md text-gray-700">Background Image</label>
               <BsPaletteFill
                 className="text-xl"
-                style={{ paddingLeft: "8px" }}
+                style={{ paddingLeft: '8px' }}
               />
             </div>
             <input
@@ -166,17 +172,17 @@ export default function CustomiseShop() {
             />
 
             {loading ? (
-              <div className="h-[300px] w-full bg-shop bg-cover bg-center flex justify-center items-end rounded-lg pb-2">
+              <div className="flex h-[300px] w-full items-end justify-center rounded-lg bg-shop bg-cover bg-center pb-2">
                 <Image
-                  src={require("../assets/avatar-0.jpg")}
+                  src={require('../assets/avatar-0.jpg')}
                   alt=""
-                  className="rounded-full mb-12"
+                  className="mb-12 rounded-full"
                   width={188}
                   height={188}
                 />
               </div>
             ) : (
-              <div className="h-[240px] w-full relative rounded-lg">
+              <div className="relative h-[240px] w-full rounded-lg">
                 <Image
                   src={bgImage}
                   className="h-full w-full object-contain"
@@ -184,7 +190,7 @@ export default function CustomiseShop() {
                 />
 
                 <Image
-                  className="w-24 h-24 rounded-full absolute left-24 bottom-20"
+                  className="absolute left-24 bottom-20 h-24 w-24 rounded-full"
                   src={image}
                   alt=""
                 />
@@ -194,5 +200,5 @@ export default function CustomiseShop() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,27 +1,31 @@
-import React, { useState } from "react";
-import axios from "axios";
-import Header from "../components/header";
-import Image from "next/image";
-import { FaStore } from "react-icons/fa";
-import { MdShoppingCart } from "react-icons/md";
+import React, { FormEvent, useState } from 'react'
+import axios from 'axios'
+import Header from '../components/header'
+import Image from 'next/image'
+import { FaStore } from 'react-icons/fa'
+import { MdShoppingCart } from 'react-icons/md'
 
 export default function Prelaunch() {
-  const url = "http://localhost:4000/bamzi/reservation";
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [industry, setIndustry] = useState("");
-  const [designation, setDesignation] = useState("");
-  const [buyerCols, setBuyerCols] = useState("bg-transparent text-gray-500");
-  const [sellerCols, setSellerCols] = useState("bg-lightorange text-white");
+  const url = 'http://localhost:4000/bamzi/reservation'
+  const [name, setName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [industry, setIndustry] = useState<string>('')
+  const [designation, setDesignation] = useState<string>('')
+  const [buyerCols, setBuyerCols] = useState<string>(
+    'bg-transparent text-gray-500'
+  )
+  const [sellerCols, setSellerCols] = useState<string>(
+    'bg-lightorange text-white'
+  )
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     console.log({
       name: name,
       email: email,
       industry: industry,
       designation: designation,
-    });
+    })
     // axios
     //   .post(url, {
     //     name: name,
@@ -32,32 +36,32 @@ export default function Prelaunch() {
     //   .then((res) => {
     //     console.log(res);
     //   });
-    setName("");
-    setEmail("");
-    setIndustry("");
-    setDesignation("");
-  };
+    setName('')
+    setEmail('')
+    setIndustry('')
+    setDesignation('')
+  }
 
   return (
-    <div className={"w-full my-0 mx-auto bg-bluelight"}>
+    <div className={'my-0 mx-auto w-full bg-bluelight'}>
       <Header secNav="prelaunch" bg />
 
       <div
         className={
-          "flex flex-col lg:flex-row py-6 md:px-16 lg:px-24  px-6 w-full items-center"
+          'flex w-full flex-col items-center py-6 px-6  md:px-16 lg:flex-row lg:px-24'
         }
       >
-        <div className={"text-center"}>
+        <div className={'text-center'}>
           <h1
             className={
-              "sm:text-4xl text-2xl lg:text-6xl text-primary font-bold text-left"
+              'text-left text-2xl font-bold text-primary sm:text-4xl lg:text-6xl'
             }
           >
             Get Ready, Online Stores Coming Through
           </h1>
           <p
             className={
-              "text-left text-gray-500 mt-4 sm:text-base text-sm lg:text-xl"
+              'mt-4 text-left text-sm text-gray-500 sm:text-base lg:text-xl'
             }
           >
             Get awesome rewards and discounts, be the first to book your space
@@ -65,12 +69,12 @@ export default function Prelaunch() {
           </p>
 
           <form
-            className={"py-0 mt-8 lg:w-11/12 w-full"}
+            className={'mt-8 w-full py-0 lg:w-11/12'}
             onSubmit={(e) => handleSubmit(e)}
           >
             <input
               className={
-                "py-3 px-4 min-h-7 my-2 mx-0 rounded-3xl outline-none border-none w-full"
+                'min-h-7 my-2 mx-0 w-full rounded-3xl border-none py-3 px-4 outline-none'
               }
               type="text"
               id="name"
@@ -79,12 +83,12 @@ export default function Prelaunch() {
               onChange={(e) => setName(e.target.value)}
             />
 
-            <div className={"flex flex-row justify-between w-full space-x-4"}>
+            <div className={'flex w-full flex-row justify-between space-x-4'}>
               <input
                 type="text"
                 id="email"
                 value={email}
-                className={" w-1/2 sm:w-2/3 px-4 py-3 my-2 rounded-3xl"}
+                className={' my-2 w-1/2 rounded-3xl px-4 py-3 sm:w-2/3'}
                 placeholder="Email here"
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -92,31 +96,31 @@ export default function Prelaunch() {
                 type="text"
                 id="industry"
                 value={industry}
-                className={"w-1/2 sm:w-1/3 px-4 py-3 my-2 rounded-3xl"}
+                className={'my-2 w-1/2 rounded-3xl px-4 py-3 sm:w-1/3'}
                 placeholder="Industry"
                 onChange={(e) => setIndustry(e.target.value)}
               />
             </div>
 
-            <div className={"grid grid-cols-2 gap-1.5 my-2 mx-0"}>
+            <div className={'my-2 mx-0 grid grid-cols-2 gap-1.5'}>
               <div
-                className={`${buyerCols} flex cursor-pointer border-2 border-lightorange rounded-3xl bg-transparent items-center justify-center py-2 px-0 space-x-4`}
+                className={`${buyerCols} flex cursor-pointer items-center justify-center space-x-4 rounded-3xl border-2 border-lightorange bg-transparent py-2 px-0`}
                 onClick={() => {
-                  setDesignation("Buyer");
-                  setBuyerCols("bg-lightorange text-white");
-                  setSellerCols("bg-transparent text-gray-500");
+                  setDesignation('Buyer')
+                  setBuyerCols('bg-lightorange text-white')
+                  setSellerCols('bg-transparent text-gray-500')
                 }}
               >
                 <MdShoppingCart size={32} /> &nbsp; Buyer
               </div>
               <div
-                className={`${sellerCols} flex cursor-pointer rounded-3xl items-center justify-center py-2 px-0 border-2 border-lightorange space-x-4`}
+                className={`${sellerCols} flex cursor-pointer items-center justify-center space-x-4 rounded-3xl border-2 border-lightorange py-2 px-0`}
                 onClick={() => {
-                  setDesignation("Seller");
-                  setSellerCols("bg-lightorange text-white");
-                  setBuyerCols("bg-transparent text-gray-500");
-                  console.log(designation);
-                  console.log(sellerCols);
+                  setDesignation('Seller')
+                  setSellerCols('bg-lightorange text-white')
+                  setBuyerCols('bg-transparent text-gray-500')
+                  console.log(designation)
+                  console.log(sellerCols)
                 }}
               >
                 <FaStore size={32} /> &nbsp; Seller
@@ -127,10 +131,9 @@ export default function Prelaunch() {
               <button
                 type="submit"
                 className={
-                  "bg-primary text-white py-4 px-0 sm:px-16 my-2 mx-0 rounded-md text-center font-bold w-full sm:w-5/6 "
+                  'my-2 mx-0 w-full rounded-md bg-primary py-4 px-0 text-center font-bold text-white sm:w-5/6 sm:px-16 '
                 }
-                style={{ backgroundColor: "#000033" }}
-                onClick={(e) => handleSubmit(e)}
+                style={{ backgroundColor: '#000033' }}
               >
                 Book your reservation
               </button>
@@ -138,14 +141,14 @@ export default function Prelaunch() {
           </form>
         </div>
 
-        <div className={"bg-shapes bg-cover"}>
+        <div className={'bg-shapes bg-cover'}>
           <Image
-            src={require("../assets/Mask.png")}
-            className={"object-cover max-w-full h-auto"}
+            src={require('../assets/Mask.png')}
+            className={'h-auto max-w-full object-cover'}
             alt=""
           />
         </div>
       </div>
     </div>
-  );
+  )
 }
