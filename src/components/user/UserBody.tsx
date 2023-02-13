@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react'
 
-const UserBody = props => {
+const UserBody = (props: any) => {
   return (
-    <div className="flex md:flex-row flex-col lg:px-16 lg:py-12 md:px-8 md:py-6">
+    <div className="flex flex-col md:flex-row md:px-8 md:py-6 lg:px-16 lg:py-12">
       {props.children}
     </div>
   )
