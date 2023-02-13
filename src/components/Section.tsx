@@ -1,25 +1,25 @@
-import image3 from "../assets/Mask.png";
-import Image from "next/image";
+import image3 from '../assets/Mask.png'
+import Image from 'next/image'
 
 const Section = () => {
   return (
     <div className="flex flex-col lg:flex-row">
-      <div className="lg:flex px-16">
+      <div className="px-16 lg:flex">
         <div className="py-24 xl:px-12">
-          <h3 className="font-bold text-lg md:text-5xl leading-normal  text-primary">
+          <h3 className="text-lg font-bold leading-normal text-primary  md:text-5xl">
             One step to a Digital Store
           </h3>
-          <p className="text-gray-400 text-sm mt-6">
+          <p className="mt-6 text-sm text-gray-400 md:text-lg">
             Every Product deserves a digital presence. Create your store from
             Bamzi and have a wide reach of market audience. Its simple and
             flexible to use.
           </p>
 
-          <div className="pt-9 flex w-full">
-            <button className=" text-white sm:text-white py-2 px-7 mx-4 rounded-lg border bg-primary">
+          <div className="flex w-full pt-9">
+            <button className=" mx-4 rounded-lg border bg-primary py-2 px-7 text-white sm:text-white">
               Get Started
             </button>
-            <button className="text-white sm:text-white py-2 px-7 mx-4 rounded-lg border bg-secondary">
+            <button className="mx-4 rounded-lg border bg-secondary py-2 px-7 text-white sm:text-white">
               Go Shopping
             </button>
           </div>
@@ -28,12 +28,12 @@ const Section = () => {
           <Image
             src={image3}
             alt="features"
-            className="w-full md:w-3/4 self-center lg:w-full"
+            className="w-full self-center md:w-3/4 lg:w-full"
           />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Section;
+export default Section
