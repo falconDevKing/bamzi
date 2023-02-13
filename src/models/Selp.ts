@@ -1,5 +1,5 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+import Mongoose from 'mongoose'
+const Schema = Mongoose.Schema
 
 const selpSchema = new Schema(
   {
@@ -22,5 +22,6 @@ const selpSchema = new Schema(
   { timestamps: true }
 )
 
-const Selp = mongoose.model("Selp", selpSchema)
-module.exports = Selp
+const Selp = Mongoose.model('Selp', selpSchema)
+
+export default Selp

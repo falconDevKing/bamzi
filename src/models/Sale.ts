@@ -1,28 +1,23 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
-const ObjectID = mongoose.Schema.Types.ObjectId
+import Mongoose from 'mongoose'
+const Schema = Mongoose.Schema
+const ObjectID = Mongoose.Schema.Types.ObjectId
 
 const saleSchema = new Schema(
   {
     owner: {
       type: ObjectID,
       required: true,
-      ref: "User",
+      ref: 'User',
     },
     order: {
       type: ObjectID,
       required: true,
-      ref: "Order",
+      ref: 'Order',
     },
     buyer: {
       type: ObjectID,
       required: true,
-      ref: "User",
-    },
-    order: {
-      type: ObjectID,
-      required: true,
-      ref: "Order",
+      ref: 'User',
     },
     quantity: {
       type: Number,
@@ -34,11 +29,11 @@ const saleSchema = new Schema(
     status: {
       type: String,
       trim: true,
-      default: "Delivered",
+      default: 'Delivered',
     },
   },
   { timestamps: true }
 )
 
-const Sale = mongoose.model("Sale", saleSchema)
+const Sale = Mongoose.model('Sale', saleSchema)
 module.exports = Sale

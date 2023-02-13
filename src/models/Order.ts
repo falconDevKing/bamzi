@@ -1,20 +1,21 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
-const ObjectID = mongoose.Schema.Types.ObjectId
+import Mongoose from 'mongoose'
+
+const Schema = Mongoose.Schema
+const ObjectID = Mongoose.Schema.Types.ObjectId
 
 const orderSchema = new Schema(
   {
     user: {
       type: ObjectID,
       required: true,
-      ref: "User",
+      ref: 'User',
     },
     products: [
       {
         productId: {
           type: ObjectID,
           required: true,
-          ref: "Product",
+          ref: 'Product',
         },
         quantity: {
           type: Number,
@@ -42,11 +43,11 @@ const orderSchema = new Schema(
     status: {
       type: String,
       trim: true,
-      default: "Pending",
+      default: 'Pending',
     },
   },
   { timestamps: true }
 )
 
-const Order = mongoose.model("Order", orderSchema)
-module.exports = Order
+const Order = Mongoose.model('Order', orderSchema)
+export default Order
