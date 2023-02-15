@@ -17,10 +17,10 @@ const Section = () => {
 
           <div className="flex w-full pt-9">
             <button className="mx-4 rounded-lg border bg-primary py-2 px-7 text-white sm:text-white">
-              Get Registered
+              Go Shopping
             </button>
             <button className="mx-4 rounded-lg border bg-secondary py-2 px-7 text-white sm:text-white">
-              Go Shopping
+              Get Registered
             </button>
           </div>
         </div>
