@@ -7,17 +7,17 @@ const Section = () => {
       <div className="px-16 lg:flex">
         <div className="py-24 xl:px-12">
           <h3 className="text-lg font-bold leading-normal text-primary  md:text-5xl">
-            One step to a Digital Store
+            One step to a Digital Shop.
           </h3>
           <p className="mt-6 text-sm text-gray-400 md:text-lg">
-            Every Product deserves a digital presence. Create your store from
-            Bamzi and have a wide reach of market audience. Its simple and
+            Every Product deserves a digital presence. Create your shop from
+            Bamzi and have a wide reach of market audience. Its free, simple and
             flexible to use.
           </p>
 
           <div className="flex w-full pt-9">
-            <button className=" mx-4 rounded-lg border bg-primary py-2 px-7 text-white sm:text-white">
-              Get Started
+            <button className="mx-4 rounded-lg border bg-primary py-2 px-7 text-white sm:text-white">
+              Get Registered
             </button>
             <button className="mx-4 rounded-lg border bg-secondary py-2 px-7 text-white sm:text-white">
               Go Shopping
