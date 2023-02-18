@@ -5,6 +5,9 @@ import jwt from 'jsonwebtoken'
 import sgMail from '@sendgrid/mail'
 import { error, Success } from 'utils/response'
 
+const accessSecret = process.env.ACCESS_TOKEN_SECRET as string
+const refreshSecret = process.env.REFRESH_TOKEN_SECRET as string
+
 type Data = {
   status: number
   message: string
@@ -34,10 +37,10 @@ export default async function handler(
         return res.status(errorResponse.status).json(errorResponse)
       }
 
-      let token = jwt.sign({ email: user.email }, 'secretValue', {
-        expiresIn: '2h',
+      let token = jwt.sign({ email: user.email }, accessSecret, {
+        expiresIn: '1h',
       })
-      let refreshtoken = jwt.sign({ email: user.email }, 'refreshsecretValue', {
+      let refreshtoken = jwt.sign({ email: user.email }, refreshSecret, {
         expiresIn: '8h',
       })
 
