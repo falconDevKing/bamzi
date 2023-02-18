@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import Wishlist from 'models/Wishlist'
 import Product from 'models/Product'
 import User from 'models/User'
-import Cart from 'models/Cart'
+
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import sgMail from '@sendgrid/mail'
@@ -21,21 +21,21 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     try {
-      let cartId = req.body.cartId
-      const response = await Cart.findById(cartId)
+      let wishlistId = req.body.wishlistId
+      const response = await Wishlist.findById(wishlistId)
         .populate('user', 'name')
         .populate({
           path: 'products',
           populate: {
             path: 'productId',
-            select: 'name price sizes colors',
+            select: 'name price',
           },
         })
 
-      const successResponse = Success(201, response, 'Cart Data Found!')
+      const successResponse = Success(201, response, 'Wishlist Data Found!')
       return res.status(successResponse.status).json(successResponse)
     } catch (err) {
-      const errorResponse = error(500, err, 'Cart not found')
+      const errorResponse = error(500, err, 'Error fetching wishlist')
       return res.status(errorResponse.status).json(errorResponse)
     }
   }

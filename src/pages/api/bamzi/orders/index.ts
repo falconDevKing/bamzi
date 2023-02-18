@@ -1,8 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import Wishlist from 'models/Wishlist'
 import Product from 'models/Product'
-import User from 'models/User'
-import Cart from 'models/Cart'
+import Order from 'models/Order'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import sgMail from '@sendgrid/mail'
@@ -19,10 +18,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  if (req.method === 'POST') {
+  if (req.method === 'GET') {
     try {
-      let cartId = req.body.cartId
-      const response = await Cart.findById(cartId)
+      const response = await Order.find()
         .populate('user', 'name')
         .populate({
           path: 'products',
@@ -32,10 +30,14 @@ export default async function handler(
           },
         })
 
-      const successResponse = Success(201, response, 'Cart Data Found!')
+      const successResponse = Success(
+        200,
+        response,
+        'Order fetched successfully!'
+      )
       return res.status(successResponse.status).json(successResponse)
     } catch (err) {
-      const errorResponse = error(500, err, 'Cart not found')
+      const errorResponse = error(500, err, 'Error fetching cart')
       return res.status(errorResponse.status).json(errorResponse)
     }
   }

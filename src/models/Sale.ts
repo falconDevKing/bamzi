@@ -36,4 +36,4 @@ const saleSchema = new Schema(
 )
 
 const Sale = Mongoose.model('Sale', saleSchema)
-module.exports = Sale
+export default Sale

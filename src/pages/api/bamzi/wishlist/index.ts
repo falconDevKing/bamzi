@@ -17,7 +17,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  if (req.method === 'POST') {
+  if (req.method === 'GET') {
     try {
       const response = await Wishlist.find()
         .populate('user', 'name')
@@ -49,7 +49,7 @@ export default async function handler(
       )
       return res.status(successResponse.status).json(successResponse)
     } catch (err) {
-      const errorResponse = error(500, err, 'Error fetching products')
+      const errorResponse = error(500, err, 'Error fetching wishlist')
       return res.status(errorResponse.status).json(errorResponse)
     }
   }

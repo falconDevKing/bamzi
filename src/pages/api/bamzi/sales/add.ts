@@ -2,7 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import Wishlist from 'models/Wishlist'
 import Product from 'models/Product'
 import User from 'models/User'
-import Cart from 'models/Cart'
+import Sale from 'models/Sale'
+
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import sgMail from '@sendgrid/mail'
@@ -21,32 +22,33 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     try {
+      console.log('req.body', req.body)
+
       const user = await User.findById(req.body.user)
 
       if (!user) {
-        const errorResponse = error(500, {}, 'No user found')
+        const errorResponse = error(500, {}, 'User doesnt exist')
         return res.status(errorResponse.status).json(errorResponse)
       }
 
-      const cart = await Cart.findOne({ user: req.body.user })
-
-      if (!cart) {
-        const errorResponse = error(500, {}, 'No cart found')
-        return res.status(errorResponse.status).json(errorResponse)
-      }
-
-      const response = await Cart.findByIdAndUpdate(cart._id, {
-        products: [],
+      const productList = req.body.products.filter(async (e: any) => {
+        return await Product.findById(e.productId)
       })
 
-      const successResponse = Success(
-        201,
-        response,
-        'Cart Deleted Successfully!'
-      )
+      let newSale = new Sale({
+        user: req.body.userId,
+        products: productList,
+        amount: req.body.amount,
+        delivery: req.body.delivery,
+        paymentMethod: req.body.paymentMethod,
+      })
+
+      const response = await newSale.save()
+
+      const successResponse = Success(201, response, 'Sale added successfully!')
       return res.status(successResponse.status).json(successResponse)
     } catch (err) {
-      const errorResponse = error(500, err, 'Error fetching cart')
+      const errorResponse = error(500, err, 'Error adding order')
       return res.status(errorResponse.status).json(errorResponse)
     }
   }

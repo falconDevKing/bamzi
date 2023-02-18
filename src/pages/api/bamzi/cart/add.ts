@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import Wishlist from 'models/Wishlist'
 import Product from 'models/Product'
 import User from 'models/User'
+import Cart from 'models/Cart'
 
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
@@ -30,36 +31,36 @@ export default async function handler(
         return res.status(errorResponse.status).json(errorResponse)
       }
 
-      const wishlist = await Wishlist.findOne({ user: req.body.user })
+      const cart = await Cart.findOne({ user: req.body.user })
 
-      if (wishlist) {
-        const response = await Wishlist.findByIdAndUpdate(wishlist._id, {
+      if (cart) {
+        const response = await Cart.findByIdAndUpdate(cart._id, {
           $addToSet: { products: req.body.productId },
         })
 
         const successResponse = Success(
           201,
           response,
-          'Wishlist updated successfully!'
+          'Cart updated successfully!'
         )
         return res.status(successResponse.status).json(successResponse)
       } else {
-        let newWishlist = new Wishlist({
+        let newCart = new Cart({
           user: req.body.user,
           products: [req.body.productId],
         })
 
-        const response = await newWishlist.save()
+        const response = await newCart.save()
 
         const successResponse = Success(
           201,
           response,
-          'Wishlist Products added successfully!'
+          'Cart Products added successfully!'
         )
         return res.status(successResponse.status).json(successResponse)
       }
     } catch (err) {
-      const errorResponse = error(500, err, 'Error adding wishlist')
+      const errorResponse = error(500, err, 'Error adding cart')
       return res.status(errorResponse.status).json(errorResponse)
     }
   }
