@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Reservation from 'models/Reservation'
-import ConnectMongo from 'utils/connectMongo'
+import { ConnectMongo } from 'utils/connectMongo'
 import { error, Success } from 'utils/response'
 
 type Data = {
