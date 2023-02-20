@@ -35,5 +35,5 @@ const saleSchema = new Schema(
   { timestamps: true }
 )
 
-const Sale = Mongoose.model('Sale', saleSchema)
+const Sale = Mongoose.models.Sale || Mongoose.model('Sale', saleSchema)
 export default Sale

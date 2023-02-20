@@ -102,3 +102,5 @@ export default function Shippinginfo() {
     </div>
   )
 }
+
+Shippinginfo.auth = true

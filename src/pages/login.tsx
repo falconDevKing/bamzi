@@ -10,30 +10,61 @@ import AuthContainer from '../components/auth/AuthContainer'
 import Header from '../components/header'
 import axios from 'axios'
 import Link from 'next/link'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
+// export default function Component() {
+//   const { data: session } = useSession()
+//   if (session) {
+//     return (
+//       <>
+//         Signed in as {session.user.email} <br />
+//         <button onClick={() => signOut()}>Sign out</button>
+//       </>
+//     )
+//   }
+//   return (
+//     <>
+//       Not signed in <br />
+//       <button onClick={() => signIn()}>Sign in</button>
+//     </>
+//   )
+// }
 export default function Login() {
-  const url = 'http://localhost:4000/bamzi/signin'
+  // const url = 'http://localhost:4000/bamzi/signin'
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const router = useRouter()
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    axios
-      .post(url, {
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        console.log(res.data)
-        if (res.data.seller) {
-          router.push('/dashboard')
-        } else {
-          router.push('/sellers-store')
-        }
-        setEmail('')
-        setPassword('')
-      })
+
+    const result = await signIn('credentials', {
+      redirect: false,
+      email,
+      password,
+    })
+    console.log('logn res', result)
+
+    if (result?.ok) {
+      setEmail('')
+      setPassword('')
+      router.push('/dashboard')
+    }
+    // axios
+    //   .post(url, {
+    //     email: email,
+    //     password: password,
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data)
+    //     if (res.data.seller) {
+    //       router.push('/dashboard')
+    //     } else {
+    //       router.push('/sellers-store')
+    //     }
+    //     setEmail('')
+    //     setPassword('')
+    //   })
   }
 
   return (

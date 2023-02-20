@@ -22,6 +22,6 @@ const selpSchema = new Schema(
   { timestamps: true }
 )
 
-const Selp = Mongoose.model('Selp', selpSchema)
+const Selp = Mongoose.models.Selp || Mongoose.model('Selp', selpSchema)
 
 export default Selp

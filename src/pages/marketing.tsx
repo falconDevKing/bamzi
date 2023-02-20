@@ -156,3 +156,5 @@ export default function Marketing() {
     </div>
   )
 }
+
+Marketing.auth = true

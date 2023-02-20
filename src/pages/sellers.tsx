@@ -402,3 +402,5 @@ export default function Sellers() {
     </div>
   )
 }
+
+Sellers.auth = true

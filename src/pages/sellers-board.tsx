@@ -783,3 +783,5 @@ export default function SellersBoard() {
     </div>
   )
 }
+
+SellersBoard.auth = true
