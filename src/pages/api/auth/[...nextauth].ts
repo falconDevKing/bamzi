@@ -7,10 +7,13 @@ import { error, Success } from 'utils/response'
 import NextAuth, { NextAuthOptions } from 'next-auth'
 import Providers from 'next-auth/providers'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import GoogleProvider from 'next-auth/providers/google'
 import { ConnectMongo, CloseConnection } from 'utils/connectMongo'
 
 const accessSecret = process.env.ACCESS_TOKEN_SECRET as string
 const refreshSecret = process.env.REFRESH_TOKEN_SECRET as string
+const googleClientId = process.env.GOOGLE_CLIENT_ID as string
+const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET as string
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -18,6 +21,10 @@ export const authOptions: NextAuthOptions = {
     maxAge: 4 * 60 * 60,
   },
   providers: [
+    GoogleProvider({
+      clientId: googleClientId,
+      clientSecret: googleClientSecret,
+    }),
     CredentialsProvider({
       credentials: {
         email: {

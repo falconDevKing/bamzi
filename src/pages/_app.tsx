@@ -32,7 +32,11 @@ export default function MyApp(props: CustomAppProps) {
   } = props
   return (
     <CacheProvider value={emotionCache}>
-      <SessionProvider session={session}>
+      <SessionProvider
+        session={session}
+        refetchInterval={7200}
+        refetchWhenOffline={false}
+      >
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
         </Head>
