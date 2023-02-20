@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import sgMail from '@sendgrid/mail'
 import { error, Success } from 'utils/response'
-import NextAuth from 'next-auth'
+import NextAuth, { NextAuthOptions } from 'next-auth'
 import Providers from 'next-auth/providers'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { ConnectMongo, CloseConnection } from 'utils/connectMongo'
@@ -12,7 +12,7 @@ import { ConnectMongo, CloseConnection } from 'utils/connectMongo'
 const accessSecret = process.env.ACCESS_TOKEN_SECRET as string
 const refreshSecret = process.env.REFRESH_TOKEN_SECRET as string
 
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
     maxAge: 4 * 60 * 60,
@@ -66,4 +66,6 @@ export default NextAuth({
     // verifyRequest: '/auth/verify-request', // (used for check email message)
     // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
   },
-})
+}
+
+export default NextAuth(authOptions)
