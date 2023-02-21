@@ -8,6 +8,8 @@ import {
 } from 'react-icons/io'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSession, signIn, signOut } from 'next-auth/react'
+import { HiOutlineLogout } from 'react-icons/hi'
 
 type HeaderProps = {
   pryNav?: string
@@ -17,6 +19,10 @@ type HeaderProps = {
 
 const Header = ({ pryNav, secNav, bg }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const signOutHandler = () => {
+    signOut()
+  }
 
   return (
     <nav className={`${bg ? 'bg-bgcolors' : 'bg-white shadow-lg'}`}>
@@ -86,6 +92,12 @@ const Header = ({ pryNav, secNav, bg }: HeaderProps) => {
                       >
                         Cart
                       </Link>
+                    </div>
+                    <div
+                      className="items-center py-3 px-4 text-sm text-gray-700 hover:bg-primary hover:text-white"
+                      onClick={() => signOutHandler()}
+                    >
+                      Logout
                     </div>
                   </div>
                 )}
@@ -158,7 +170,7 @@ const Header = ({ pryNav, secNav, bg }: HeaderProps) => {
           {/**secondary nav items */}
           {secNav === 'auth' && (
             <div className="hidden items-center space-x-3 lg:flex">
-              <Link href="/Shopping-Cart">
+              <Link href="/shopping-cart">
                 <a className="flex font-bold text-primary hover:text-gray-400">
                   <span className="mr-1">Cart</span>
                   <IoIosCart className="h-5 w-5" />
@@ -166,7 +178,7 @@ const Header = ({ pryNav, secNav, bg }: HeaderProps) => {
               </Link>
               <Link href="/login">
                 <a className="flex font-bold hover:text-gray-400">
-                  <span className="mr-1 rounded-md border border-yellow-500 py-1 px-3">
+                  <span className="mr-1 rounded-md border border-yellow-500 py-1 px-3 hover:bg-secondary hover:text-primary">
                     Login
                   </span>
                 </a>
@@ -215,6 +227,9 @@ const Header = ({ pryNav, secNav, bg }: HeaderProps) => {
                   />
                 </a>
               </Link>
+              <div onClick={() => signOutHandler()}>
+                <HiOutlineLogout size={40} />
+              </div>
             </div>
           )}
         </div>

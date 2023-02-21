@@ -1,5 +1,6 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, MouseEvent, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebookSquare } from 'react-icons/fa'
 import AuthStrip from '../components/auth/AuthStrip'
@@ -11,12 +12,15 @@ import Header from '../components/header'
 import axios from 'axios'
 import ErrorHandler from 'utils/ErrorHandler'
 import SuccessHandler from 'utils/SuccessHandler'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 export default function Signup() {
   const url = 'http://localhost:4000/bamzi/signup'
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+
+  const router = useRouter()
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -30,6 +34,8 @@ export default function Signup() {
         SuccessHandler({ message: 'Sign Up Successful' })
       }
       console.log(signupResponse)
+
+      router.push('/my-account')
     } catch (error: any) {
       ErrorHandler({ message: error.message ?? 'Error Signin Up' })
       console.log('signup error', error)
@@ -38,6 +44,22 @@ export default function Signup() {
       setEmail('')
       setPassword('')
     }
+  }
+
+  const loginGoogle = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    const googleResponse = await signIn('google', {
+      callbackUrl: 'http://localhost:3000/my-account',
+    })
+    console.log('googleResponse', googleResponse)
+  }
+
+  const loginFacebook = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    const facebookResponse = await signIn('facebook', {
+      callbackUrl: 'http://localhost:3000/my-account',
+    })
+    console.log('googleResponse', facebookResponse)
   }
 
   return (
@@ -61,13 +83,19 @@ export default function Signup() {
             </Link>
           </div>
 
-          <button className="flex items-center justify-center space-x-3 rounded-lg border border-gray-100 bg-white py-2 text-white shadow-md">
+          <button
+            className="flex items-center justify-center space-x-3 rounded-lg border border-gray-100 bg-white py-2 text-white shadow-md"
+            onClick={(e) => loginGoogle(e)}
+          >
             <FcGoogle size={24} />
             <span className="font-semibold text-black">
               Sign Up with Google
             </span>
           </button>
-          <button className="flex items-center justify-center space-x-3 rounded-lg bg-facebook py-2 text-white shadow-md">
+          <button
+            className="flex items-center justify-center space-x-3 rounded-lg bg-facebook py-2 text-white shadow-md"
+            onClick={(e) => loginFacebook(e)}
+          >
             <FaFacebookSquare size={24} />
             <span className="font-semibold">Sign Up with Facebook</span>
           </button>

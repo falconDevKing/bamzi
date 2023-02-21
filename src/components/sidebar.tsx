@@ -13,6 +13,8 @@ import {
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSession, signIn, signOut } from 'next-auth/react'
+import { HiOutlineLogout } from 'react-icons/hi'
 
 type SidebarProps = {
   page: string
@@ -26,6 +28,10 @@ const Sidebar = ({ showSidebar, page }: SidebarProps) => {
   const regularPage =
     'cursor-pointer py-0.5 px-2 flex items-center w-full hover:bg-primary hover:text-white hover:border-none hover:rounded-full'
   const LinkReset = 'p-0 font-light'
+
+  const signOutHandler = () => {
+    signOut()
+  }
 
   return (
     <div
@@ -128,6 +134,10 @@ const Sidebar = ({ showSidebar, page }: SidebarProps) => {
 
         <span className={regularPage}>
           <FiHelpCircle className="mr-2" /> Help
+        </span>
+
+        <span className={regularPage} onClick={() => signOutHandler()}>
+          <HiOutlineLogout className="mr-2" /> Logout
         </span>
       </div>
     </div>
