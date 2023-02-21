@@ -36,7 +36,7 @@
 }
 
 .rightcontent {
-  background-image: url(../assets/Group-11551.png);
+  background-image: url(assets/Group-11551.png);
   background-repeat: no-repeat;
   background-position: right;
   background-size: contain;
@@ -57,7 +57,7 @@
 }
 
 .leftcontent {
-  background-image: url(../assets/Group-11551.png);
+  background-image: url(assets/Group-11551.png);
   background-repeat: no-repeat;
   background-position: left;
   background-size: contain;

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import Sidebar from '../components/sidebar'
-import SellersHeader from '../components/SellersHeader'
-import { salesData } from '../utils/data'
-import SalesItem from '../components/SalesItem'
+import Sidebar from 'components/sidebar'
+import SellersHeader from 'components/SellersHeader'
+import { salesData } from 'utils/data'
+import SalesItem from 'components/SalesItem'
 
 import {
   FaTruck,

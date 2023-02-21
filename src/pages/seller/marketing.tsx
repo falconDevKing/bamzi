@@ -3,8 +3,8 @@ import { FcGoogle } from 'react-icons/fc'
 import { RiFacebookBoxFill } from 'react-icons/ri'
 import { RiMailUnreadLine } from 'react-icons/ri'
 import { FaMailBulk } from 'react-icons/fa'
-import Sidebar from '../components/sidebar'
-import SellersHeader from '../components/SellersHeader'
+import Sidebar from 'components/sidebar'
+import SellersHeader from 'components/SellersHeader'
 
 export default function Marketing() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false)

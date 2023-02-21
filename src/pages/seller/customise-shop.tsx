@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react'
 import axios from 'axios'
-import Sidebar from '../components/sidebar'
-import SellersHeader from '../components/SellersHeader'
+import Sidebar from 'components/sidebar'
+import SellersHeader from 'components/SellersHeader'
 import Image from 'next/image'
 import { FiBox } from 'react-icons/fi'
 import { BsPaletteFill, BsStack } from 'react-icons/bs'
@@ -109,7 +109,7 @@ export default function CustomiseShop() {
                 <div className="w-1/2 rounded-lg border border-primary px-4 py-2">
                   <span className="flex items-center justify-center space-x-2 sm:justify-start">
                     <Image
-                      src={require('../assets/nigeria.png')}
+                      src={require('assets/nigeria.png')}
                       alt=""
                       className="mt-1 h-3 w-6 sm:mt-0"
                       width={24}
@@ -174,7 +174,7 @@ export default function CustomiseShop() {
             {loading ? (
               <div className="flex h-[300px] w-full items-end justify-center rounded-lg bg-shop bg-cover bg-center pb-2">
                 <Image
-                  src={require('../assets/avatar-0.jpg')}
+                  src={require('assets/avatar-0.jpg')}
                   alt=""
                   className="mb-12 rounded-full"
                   width={188}

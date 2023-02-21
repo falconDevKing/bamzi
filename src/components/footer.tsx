@@ -28,7 +28,8 @@ export default function Footer({
         <div>
           <h5 className="text-lg font-semibold text-white">Contact Us!</h5>
           <p className="mt-2 text-sm font-light text-white">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Kindly reach out to us woth any concern or feedback. We'll be in
+            touch.
           </p>
         </div>
         <form action="">
@@ -58,8 +59,8 @@ export default function Footer({
               <Link href="/">
                 <a>
                   <Image
-                    src={require('../assets/BAMZI.png')}
-                    width={'60px'}
+                    src={require('assets/BAMZI.png')}
+                    width={'100px'}
                     height={'60px'}
                     alt="bamzi"
                   />
@@ -93,7 +94,7 @@ export default function Footer({
               </div>
 
               <div className="mt-4 pr-8 sm:pr-16 lg:pr-24">
-                <Image src={require('../assets/group.png')} alt="" />
+                <Image src={require('assets/group.png')} alt="" />
               </div>
             </div>
 

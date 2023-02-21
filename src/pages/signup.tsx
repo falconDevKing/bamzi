@@ -13,38 +13,50 @@ import axios from 'axios'
 import ErrorHandler from 'utils/ErrorHandler'
 import SuccessHandler from 'utils/SuccessHandler'
 import { useSession, signIn, signOut } from 'next-auth/react'
+import Input from 'components/Input'
+import { useFormik } from 'formik'
+import SignUpValidation from 'utils/validation/signup'
 
 export default function Signup() {
-  const url = 'http://localhost:4000/bamzi/signup'
-  const [name, setName] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const initialValues = {
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  }
 
   const router = useRouter()
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    try {
-      const signupResponse = await axios.post('api/auth/signup', {
-        name,
-        email,
-        password,
-      })
-      if (signupResponse) {
-        SuccessHandler({ message: 'Sign Up Successful' })
-      }
-      console.log(signupResponse)
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: SignUpValidation,
+    validateOnChange: true,
+    validateOnBlur: true,
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const { name, email, password } = values
+        const signupResponse = await axios.post('api/auth/signup', {
+          name,
+          email,
+          password,
+        })
+        if (signupResponse) {
+          SuccessHandler({ message: 'Sign Up Successful' })
+        }
+        console.log(signupResponse)
 
-      router.push('/my-account')
-    } catch (error: any) {
-      ErrorHandler({ message: error.message ?? 'Error Signin Up' })
-      console.log('signup error', error)
-    } finally {
-      setName('')
-      setEmail('')
-      setPassword('')
-    }
-  }
+        router.push('/my-account')
+      } catch (error: any) {
+        ErrorHandler({ message: error.message ?? 'Error Signin Up' })
+        console.log('signup error', error)
+      } finally {
+        resetForm()
+      }
+    },
+  })
+
+  const { handleSubmit, handleBlur, handleChange, values, touched, errors } =
+    formik
 
   const loginGoogle = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -59,7 +71,7 @@ export default function Signup() {
     const facebookResponse = await signIn('facebook', {
       callbackUrl: 'http://localhost:3000/my-account',
     })
-    console.log('googleResponse', facebookResponse)
+    console.log('facebookResponse', facebookResponse)
   }
 
   return (
@@ -100,32 +112,57 @@ export default function Signup() {
             <span className="font-semibold">Sign Up with Facebook</span>
           </button>
           <form className="flex flex-col space-y-3" onSubmit={handleSubmit}>
-            <input
+            <Input
               type="text"
               id="name"
-              value={name}
+              name="name"
+              value={values['name']}
               autoComplete="off"
               placeholder="Full Name"
               className="rounded-full border border-gray-100 py-2 px-6 shadow-md"
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors}
+              touched={touched}
             />
-            <input
+            <Input
               type="text"
               id="email"
-              value={email}
+              name="email"
+              value={values['email']}
               autoComplete="off"
               placeholder="Email Address"
               className="rounded-full border border-gray-100 py-2 px-6 shadow-md"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors}
+              touched={touched}
             />
-            <input
+            <Input
               type="password"
               id="password"
-              value={password}
+              name="password"
+              value={values['password']}
               autoComplete="off"
               placeholder="Password"
               className="rounded-full border border-gray-100 py-2 px-6 shadow-md"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors}
+              touched={touched}
+            />
+            <Input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={values['confirmPassword']}
+              autoComplete="off"
+              placeholder="Confirm Password"
+              className="rounded-full border border-gray-100 py-2 px-6 shadow-md"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors}
+              touched={touched}
             />
             <button
               className="rounded-lg bg-primary py-2 font-semibold text-white shadow-md"

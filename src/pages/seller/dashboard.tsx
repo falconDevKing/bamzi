@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import Sidebar from '../components/sidebar'
-import SellersHeader from '../components/SellersHeader'
+import Sidebar from 'components/sidebar'
+import SellersHeader from 'components/SellersHeader'
 import { FaQuestionCircle, FaHeart } from 'react-icons/fa'
 import { HiUsers } from 'react-icons/hi'
 import { MdNotificationsActive, MdInfoOutline } from 'react-icons/md'
-import { tickets, latestSales } from '../utils/data'
+import { tickets, latestSales } from 'utils/data'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useSession, signIn, signOut } from 'next-auth/react'
@@ -92,7 +92,7 @@ export default function SellersDashboard() {
             ))}
 
             <div className="flex justify-end">
-              <Link href="/sales-page" className="p-0">
+              <Link href="/seller/sales-page" className="p-0">
                 <button className="rounded bg-primary py-1.5 px-6 text-sm text-white">
                   View Sales
                 </button>
@@ -128,7 +128,7 @@ export default function SellersDashboard() {
                       You have done 57.6% more sales today
                     </p>
 
-                    <Link href="/sales-page" className="p-0">
+                    <Link href="/seller/sales-page" className="p-0">
                       <button className="mt-2 w-full rounded bg-primary py-1.5 text-xs text-white">
                         View Sales
                       </button>
@@ -137,7 +137,7 @@ export default function SellersDashboard() {
                 </div>
 
                 <div className="-mt-6 w-1/3">
-                  <Image src={require('../assets/cup.png')} alt="" />
+                  <Image src={require('assets/cup.png')} alt="" />
                 </div>
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function SellersDashboard() {
               <MdInfoOutline className="absolute right-1" />
               <p className="text-sm font-semibold text-black">Lead Sales</p>
             </div>
-            <Image src={require('../assets/dashboard.png')} alt="" />
+            <Image src={require('assets/dashboard.png')} alt="" />
           </div>
 
           <div className="w-full space-y-2 divide-y divide-gray-200 rounded-lg bg-white py-4 px-4 sm:w-5/12">

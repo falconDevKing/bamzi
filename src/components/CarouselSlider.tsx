@@ -1,7 +1,7 @@
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import image13 from "../assets/D1-image3.png";
-import Image from "next/image";
+import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import image13 from 'assets/D1-image3.png'
+import Image from 'next/image'
 
 export default function CarouselSlider() {
   return (
@@ -17,67 +17,67 @@ export default function CarouselSlider() {
         showIndicators={false}
         centerSlidePercentage={20}
       >
-        <div className="px-8 w-48">
+        <div className="w-48 px-8">
           <Image src={image13} alt="" className="" />
-          <h5 className="text-sm pt-2 text-center font-bold text-gray-600">
+          <h5 className="pt-2 text-center text-sm font-bold text-gray-600">
             Phones
           </h5>
         </div>
-        <div className="px-8 w-48">
+        <div className="w-48 px-8">
           <Image src={image13} alt="" className="" />
-          <h5 className="text-sm pt-2 text-center font-bold text-gray-600">
+          <h5 className="pt-2 text-center text-sm font-bold text-gray-600">
             Watch
           </h5>
         </div>
-        <div className="px-8 w-48">
+        <div className="w-48 px-8">
           <Image src={image13} alt="" className="" />
-          <h5 className="text-sm pt-2 text-center font-bold text-gray-600">
+          <h5 className="pt-2 text-center text-sm font-bold text-gray-600">
             Watch
           </h5>
         </div>
-        <div className="px-8 w-48">
+        <div className="w-48 px-8">
           <Image src={image13} alt="" className="" />
-          <h5 className="text-sm pt-2 text-center font-bold text-gray-600">
+          <h5 className="pt-2 text-center text-sm font-bold text-gray-600">
             Watch
           </h5>
         </div>
-        <div className="px-8 w-48">
+        <div className="w-48 px-8">
           <Image src={image13} alt="" className="" />
-          <h5 className="text-sm pt-2 text-center font-bold text-gray-600">
+          <h5 className="pt-2 text-center text-sm font-bold text-gray-600">
             Watch
           </h5>
         </div>
-        <div className="px-8 w-48">
+        <div className="w-48 px-8">
           <Image src={image13} alt="" className="" />
-          <h5 className="text-sm pt-2 text-center font-bold text-gray-600">
+          <h5 className="pt-2 text-center text-sm font-bold text-gray-600">
             Watch
           </h5>
         </div>
-        <div className="px-8 w-48">
+        <div className="w-48 px-8">
           <Image src={image13} alt="" className="" />
-          <h5 className="text-sm pt-2 text-center font-bold text-gray-600">
+          <h5 className="pt-2 text-center text-sm font-bold text-gray-600">
             Watch
           </h5>
         </div>
-        <div className="px-8 w-48">
+        <div className="w-48 px-8">
           <Image src={image13} alt="" className="" />
-          <h5 className="text-sm pt-2 text-center font-bold text-gray-600">
+          <h5 className="pt-2 text-center text-sm font-bold text-gray-600">
             Ear-Pod
           </h5>
         </div>
-        <div className="px-8 w-48">
+        <div className="w-48 px-8">
           <Image src={image13} alt="" className="" />
-          <h5 className="text-sm pt-2 text-center font-bold text-gray-600">
+          <h5 className="pt-2 text-center text-sm font-bold text-gray-600">
             Dell Laptop
           </h5>
         </div>
-        <div className="px-8 w-48">
+        <div className="w-48 px-8">
           <Image src={image13} alt="" className="" />
-          <h5 className="text-sm pt-2 text-center font-bold text-gray-600">
+          <h5 className="pt-2 text-center text-sm font-bold text-gray-600">
             Camera Len
           </h5>
         </div>
       </Carousel>
     </div>
-  );
+  )
 }

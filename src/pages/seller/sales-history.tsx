@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { FaChevronDown, FaCalendarAlt } from 'react-icons/fa'
 import { FiGrid, FiSearch, FiUsers } from 'react-icons/fi'
 
-import Sidebar from '../components/sidebar'
-import SellersHeader from '../components/SellersHeader'
-import { salesHistoryData } from '../utils/data'
-import SalesHistoryItem from '../components/SalesHistoryItem'
+import Sidebar from 'components/sidebar'
+import SellersHeader from 'components/SellersHeader'
+import { salesHistoryData } from 'utils/data'
+import SalesHistoryItem from 'components/SalesHistoryItem'
 
 export default function SaleHistory() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false)

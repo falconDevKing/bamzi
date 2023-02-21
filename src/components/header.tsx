@@ -34,7 +34,7 @@ const Header = ({ pryNav, secNav, bg }: HeaderProps) => {
               <Link href="/">
                 <a>
                   <Image
-                    src={require('../assets/BAMZI.png')}
+                    src={require('assets/BAMZI.png')}
                     className="w-20 lg:w-16"
                     alt="bamzi"
                     width={120}
@@ -63,7 +63,7 @@ const Header = ({ pryNav, secNav, bg }: HeaderProps) => {
                     </div>
                     <div className="py-1 text-sm text-gray-700 hover:bg-primary hover:text-white">
                       <Link
-                        href="/dashboard"
+                        href="/seller/dashboard"
                         className="items-center px-4 py-2 "
                       >
                         Products
@@ -111,7 +111,7 @@ const Header = ({ pryNav, secNav, bg }: HeaderProps) => {
             {pryNav === 'auth' && (
               <div className="ml-10 hidden items-center space-x-10 py-4 lg:flex">
                 <Link
-                  href="/sellers-board"
+                  href="/seller/sellers-board"
                   className="font-bold text-primary hover:text-gray-400"
                 >
                   Products
@@ -140,7 +140,7 @@ const Header = ({ pryNav, secNav, bg }: HeaderProps) => {
             {pryNav === 'user' && (
               <div className="ml-10 hidden items-center space-x-4 lg:flex">
                 <Link
-                  href="/sellers-board"
+                  href="/seller/sellers-board"
                   className="font-semibold text-primary hover:text-gray-400"
                 >
                   Products
@@ -221,7 +221,7 @@ const Header = ({ pryNav, secNav, bg }: HeaderProps) => {
               <Link href="/my-account">
                 <a className="w-14">
                   <Image
-                    src={require('../assets/avatar-0.jpg')}
+                    src={require('assets/avatar-0.jpg')}
                     alt=""
                     className="aspect-square rounded-full object-contain shadow-sm"
                   />

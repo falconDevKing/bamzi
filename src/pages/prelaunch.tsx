@@ -143,7 +143,7 @@ export default function Prelaunch() {
 
         <div className={'bg-shapes bg-cover'}>
           <Image
-            src={require('../assets/Mask.png')}
+            src={require('assets/Mask.png')}
             className={'h-auto max-w-full object-cover'}
             alt=""
           />
