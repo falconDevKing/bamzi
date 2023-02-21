@@ -15,7 +15,6 @@ import { useFormik } from 'formik'
 import SignInValidation from 'utils/validation/signin'
 import ErrorHandler from 'utils/ErrorHandler'
 import SuccessHandler from 'utils/SuccessHandler'
-import { Success } from 'utils/response'
 import Input from 'components/Input'
 
 export default function Login() {
@@ -43,9 +42,9 @@ export default function Login() {
 
         SuccessHandler({ message: 'Log In Successful' })
 
-        if (!result?.url) {
+        if (result?.ok && (!result?.url || result.url.includes('login'))) {
           resetForm()
-          router.push('/')
+          router.push('/sellers-store')
         }
       } catch (error: any) {
         ErrorHandler({ message: error.message ?? 'Error Signin Up' })
@@ -58,8 +57,8 @@ export default function Login() {
     e.preventDefault()
     const googleResponse = await signIn('google')
     console.log('googleResponse', googleResponse)
-    if (!googleResponse?.url) {
-      router.push('/')
+    if (!googleResponse?.url || googleResponse?.url.includes('login')) {
+      router.push('/sellers-store')
     }
   }
 
@@ -67,8 +66,8 @@ export default function Login() {
     e.preventDefault()
     const facebookResponse = await signIn('facebook')
     console.log('googleResponse', facebookResponse)
-    if (!facebookResponse?.url) {
-      router.push('/')
+    if (!facebookResponse?.url || !facebookResponse?.url.includes('login')) {
+      router.push('/sellers-store')
     }
   }
 

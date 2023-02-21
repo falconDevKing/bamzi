@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import sgMail from '@sendgrid/mail'
 import { error, Success } from 'utils/response'
+import { CloseConnection, ConnectMongo } from 'utils/connectMongo'
 
 type Data = {
   status: number
@@ -25,10 +26,11 @@ export default async function handler(
     try {
       let email = req.body.email
 
+      await ConnectMongo()
+
       const user = await User.findOne({ email: email })
       if (!user) {
-        const errorResponse = error(400, {}, 'User does not exist')
-        return res.status(errorResponse.status).json(errorResponse)
+        throw new Error('User doesnt exist')
       }
 
       let resetToken = jwt.sign({ email: user.email }, RESET_TOKEN_SECRET, {
@@ -57,9 +59,15 @@ export default async function handler(
         result,
         `A reset mail has been sent to ${user.email}`
       )
+      await CloseConnection()
       return res.status(successResponse.status).json(successResponse)
-    } catch (err) {
-      const errorResponse = error(500, err, 'Error in forgot Password')
+    } catch (err: any) {
+      const errorResponse = error(
+        500,
+        err,
+        err?.message ?? 'Error in forgot Password'
+      )
+      await CloseConnection()
       return res.status(errorResponse.status).json(errorResponse)
     }
   }

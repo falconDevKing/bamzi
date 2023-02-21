@@ -9,8 +9,9 @@ type UserSidebarProps = {
 
 const UserSidebar = ({ page }: UserSidebarProps) => {
   const currentPage =
-    'flex items-center space-x-2 py-2 px-4 bg-gray-200 relative md:before:absolute md:before:left-0 md:before:h-6 md:before:w-1 md:before:bg-primary after:absolute after:w-full after:h-1 after:bg-primary after:left-0 after:bottom-0 md:after:w-0 md:after:h-0'
-  const regularPage = 'flex items-center space-x-2 py-2 px-4 relative'
+    'flex items-center space-x-2 py-2 px-4 bg-gray-200 relative md:before:absolute md:before:left-0 md:before:h-6 md:before:w-1 md:before:bg-primary after:absolute after:w-full after:h-1 after:bg-primary after:left-0 after:bottom-0 md:after:w-0 md:after:h-0 cursor-pointer'
+  const regularPage =
+    'flex items-center space-x-2 py-2 px-4 relative cursor-pointer'
   const LinkReset = 'p-0'
   const tooltip =
     'absolute bottom-3 left-0 text-xs font-light bg-white bg-opacity-100 z-10 border border-black text-black py-1 px-2'
@@ -23,7 +24,7 @@ const UserSidebar = ({ page }: UserSidebarProps) => {
 
   return (
     <div className="flex justify-center bg-gray-100 shadow md:flex-col md:justify-start md:rounded-xl md:py-16 lg:w-3/12">
-      <Link href="/my-account" className={LinkReset}>
+      <Link href="/my-account" className={`LinkReset`}>
         <span
           className={page === 'my-account' ? currentPage : regularPage}
           onMouseEnter={() => {

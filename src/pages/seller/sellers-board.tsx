@@ -136,7 +136,7 @@ export default function SellersBoard() {
 
   useEffect(() => {
     const fetchData = () => {
-      axios.get('http://localhost:4000/bamzi/products/').then((response) => {
+      axios.get('http://localhost:3000/bamzi/products/').then((response) => {
         console.log(response.data.response)
         const fetchedData = response.data.response
         setProducts(fetchedData)
@@ -154,7 +154,7 @@ export default function SellersBoard() {
     handleSize()
     handleRam()
     axios
-      .post('http://localhost:4000/bamzi/products/add', {
+      .post('http://localhost:3000/bamzi/products/add', {
         name: title,
         description: description,
         category: selectedCategory,
@@ -197,7 +197,7 @@ export default function SellersBoard() {
     handleSize()
     handleRam()
     axios
-      .put('http://localhost:4000/bamzi/products/update', {
+      .put('http://localhost:3000/bamzi/products/update', {
         productID: productID,
         name: title,
         description: description,
@@ -236,7 +236,7 @@ export default function SellersBoard() {
 
   const deleteProduct = async (productID: string) => {
     const res = await axios.post(
-      'http://localhost:4000/bamzi/products/delete',
+      'http://localhost:3000/bamzi/products/delete',
       { productID: productID }
     )
     return res

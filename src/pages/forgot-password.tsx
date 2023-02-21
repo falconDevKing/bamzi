@@ -7,22 +7,51 @@ import AuthContainer from '../components/auth/AuthContainer'
 import Header from '../components/header'
 import axios from 'axios'
 import Link from 'next/link'
+import { useFormik } from 'formik'
+import SignInValidation from 'utils/validation/signin'
+import ErrorHandler from 'utils/ErrorHandler'
+import SuccessHandler from 'utils/SuccessHandler'
+import Input from 'components/Input'
+import * as Yup from 'yup'
 
 export default function ForgotPassword() {
-  const url = 'http://localhost:4000/bamzi/forgot-password'
+  const url = 'http://localhost:3000/bamzi/forgot-password'
   const [email, setEmail] = useState('')
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    axios
-      .put(url, {
-        email: email,
-      })
-      .then((res) => {
-        console.log(res)
-      })
-    setEmail('')
-  }
+  const formik = useFormik({
+    initialValues: { email: '' },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email('Invalid email address')
+        .required('Email address is required'),
+    }),
+    validateOnChange: true,
+    validateOnBlur: true,
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const { email } = values
+        const forget = await axios.post('/api/auth/forgot-password', {
+          email: email,
+        })
+
+        console.log('logn res', forget)
+
+        SuccessHandler({
+          message: forget.data?.message ?? 'Mail sent Successful',
+        })
+      } catch (error: any) {
+        if (error?.response?.data?.message !== 'User doesnt exist') {
+          ErrorHandler({ message: error.message ?? 'Error Resetting Password' })
+          console.log('signup error', error)
+        }
+      } finally {
+        resetForm()
+      }
+    },
+  })
+
+  const { handleSubmit, handleBlur, handleChange, values, touched, errors } =
+    formik
 
   return (
     <AuthContainer>
@@ -41,20 +70,21 @@ export default function ForgotPassword() {
           </p>
           <p className="text-sm text-gray-400">
             Input your email and a verification link would be sent to your
-            mailbox
+            mailbox if you have an account with us
           </p>
-          <form
-            className="flex flex-col space-y-3"
-            onSubmit={(e) => handleSubmit(e)}
-          >
-            <input
+          <form className="flex flex-col space-y-3" onSubmit={handleSubmit}>
+            <Input
               type="text"
               id="email"
-              value={email}
+              name="email"
+              value={values['email']}
               autoComplete="off"
               placeholder="Email Address"
               className="rounded border border-gray-100 py-2 px-6 shadow"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors}
+              touched={touched}
             />
             <button
               type="submit"

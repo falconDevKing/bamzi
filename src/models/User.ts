@@ -20,11 +20,10 @@ const userSchema = new Schema(
       type: String,
     },
     shippingAddress: {
-      type: String,
-      trim: true,
+      type: Schema.Types.Mixed,
     },
     phoneNumber: {
-      type: Number,
+      type: String,
     },
     dob: {
       type: String,

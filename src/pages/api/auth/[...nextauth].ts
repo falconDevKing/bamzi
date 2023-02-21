@@ -85,14 +85,14 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user, account, profile, isNewUser }) {
-      console.log('user', user)
-      console.log('account', account)
-      console.log('profile', profile)
-      console.log('isNewUser', isNewUser)
-      console.log('token', token)
+      // console.log('user', user)
+      // console.log('account', account)
+      // console.log('profile', profile)
+      // console.log('isNewUser', isNewUser)
+      // console.log('token', token)
 
       if (user && account?.provider) {
-        console.log('save called')
+        // console.log('save called')
         const savedOAuth = await SaveOAuth(user, account?.provider)
         console.log('save done', savedOAuth)
       }

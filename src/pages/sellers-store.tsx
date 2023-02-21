@@ -38,7 +38,7 @@ export default function SellersStore() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get('http://localhost:4000/bamzi/products/')
+      const res = await axios.get('http://localhost:3000/bamzi/products/')
       setProducts(res.data.response)
     }
 
@@ -46,7 +46,7 @@ export default function SellersStore() {
   }, [])
 
   const addToWishlist = async (productId: string) => {
-    const res = await axios.post('http://localhost:4000/bamzi/wishlist/add', {
+    const res = await axios.post('http://localhost:3000/bamzi/wishlist/add', {
       user: userID,
       productId: productId,
     })
@@ -54,7 +54,7 @@ export default function SellersStore() {
   }
 
   const addToCart = async (productId: string) => {
-    const res = await axios.post('http://localhost:4000/bamzi/cart/add', {
+    const res = await axios.post('http://localhost:3000/bamzi/cart/add', {
       user: userID,
       productId: productId,
     })

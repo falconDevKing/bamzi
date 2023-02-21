@@ -9,7 +9,7 @@ const ShoppingCart = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get('http://localhost:4000/bamzi/cart/')
+      const res = await axios.get('http://localhost:3000/bamzi/cart/')
       console.log(res)
       setProducts(res.data.response)
     }
