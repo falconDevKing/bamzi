@@ -3859,6 +3859,11 @@ raw-body@^2.2.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-confirm-alert@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/react-confirm-alert/-/react-confirm-alert-3.0.6.tgz#f7552ec839c1e189370cef02ffed3035e7ca2e22"
+  integrity sha512-rplP6Ed9ZSNd0KFV5BUzk4EPQ77BxsrayllBXGFuA8xPXc7sbBjgU5KUrNpl7aWFmP7mXRlVXfuy1IT5DbffYw==
+
 react-dom@18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
@@ -4296,6 +4301,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+sweetalert2@^11.7.2:
+  version "11.7.2"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.7.2.tgz#a9a5e7323beeb3283e1dd03af0e1cf460c5af112"
+  integrity sha512-atPjDa3fv/4xwZpiAt7FZUgAhR5VAASiLP2hu7HUeVDXx+v4/9nD1W0u8xal1e9f2/qGh0DwTxPXPV9XoZIBvg==
 
 synckit@^0.8.4:
   version "0.8.5"

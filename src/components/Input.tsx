@@ -53,7 +53,9 @@ const Input = (props: InputProps) => {
         disabled={props.disabled}
       />
       {props.error && props.error[props.name] && touched && (
-        <p className={'text-xs text-red-500'}>{props.error[props.name]}</p>
+        <p className={'text-left text-xs text-red-500'}>
+          {props.error[props.name]}
+        </p>
       )}
     </>
   )

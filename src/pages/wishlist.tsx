@@ -9,7 +9,7 @@ const WishList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get('http://localhost:4000/bamzi/wishlist/')
+      const res = await axios.get('http://localhost:3000/bamzi/wishlist/')
       setProducts(res.data.response)
     }
 

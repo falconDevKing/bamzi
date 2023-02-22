@@ -9,11 +9,27 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import * as yup from 'yup'
 import { Formik } from 'formik'
+import { GetServerSideProps } from 'next'
+import Input from 'components/Input'
+import ErrorHandler from 'utils/ErrorHandler'
+import SuccessHandler from 'utils/SuccessHandler'
 
-export default function ResetPassword() {
-  const [email, setEmail] = useState<string>('')
+interface ResetPasswordProps {
+  email: string | null
+  errorMessage: string | null
+}
+
+export default function ResetPassword({
+  email,
+  errorMessage,
+}: ResetPasswordProps) {
   const router = useRouter()
   const { token } = router.query
+
+  if (errorMessage) {
+    ErrorHandler({ message: errorMessage })
+    router.push('/login')
+  }
 
   const schema = yup.object({
     password: yup
@@ -25,19 +41,6 @@ export default function ResetPassword() {
       .required('Repeat Password is required')
       .oneOf([yup.ref('password')], 'Password must match'),
   })
-
-  useEffect(() => {
-    const fetchData = () => {
-      axios
-        .get(`http://localhost:4000/bamzi/reset-password/${token}`)
-        .then((response) => {
-          const data = response.data.response.email
-          setEmail(data)
-        })
-    }
-
-    fetchData()
-  }, [token])
 
   return (
     <AuthContainer>
@@ -57,24 +60,38 @@ export default function ResetPassword() {
               password: '',
               repeatPassword: '',
             }}
+            validateOnBlur={true}
+            validateOnChange={true}
             validationSchema={schema}
-            onSubmit={(values) => {
-              axios
-                .put(`http://localhost:4000/bamzi/reset-password/${token}`, {
-                  password: values.repeatPassword,
+            onSubmit={async (values, { resetForm }) => {
+              try {
+                const resetResponse = await axios.put(
+                  `/api/auth/reset-password/${token}`,
+                  {
+                    password: values.password,
+                  }
+                )
+                SuccessHandler({ message: 'Password updated Successfully' })
+                router.push('/login')
+              } catch (error) {
+                ErrorHandler({
+                  message: 'Unable to change password. Try again',
                 })
-                .then((res) => {
-                  console.log(res)
-                  return res
-                })
+              } finally {
+                resetForm()
+              }
             }}
           >
             {(props) => (
-              <div className="flex flex-col space-y-2.5">
+              <form
+                className="flex flex-col space-y-3"
+                onSubmit={props.handleSubmit}
+              >
                 <div className="flex flex-col">
-                  <input
+                  <Input
                     type="password"
                     id="password"
+                    name="password"
                     value={props.values.password}
                     autoComplete="off"
                     placeholder="New Password"
@@ -89,9 +106,10 @@ export default function ResetPassword() {
                   ) : null}
                 </div>
                 <div className="flex flex-col">
-                  <input
+                  <Input
                     type="password"
                     id="repeatPassword"
+                    name="repeatPassword"
                     value={props.values.repeatPassword}
                     autoComplete="off"
                     placeholder="Repeat Password"
@@ -109,13 +127,12 @@ export default function ResetPassword() {
 
                 <button
                   className="rounded bg-primary py-2 text-white"
-                  type="submit"
                   onClick={() => props.handleSubmit}
                   disabled={props.dirty && props.isValid ? false : true}
                 >
                   Reset
                 </button>
-              </div>
+              </form>
             )}
           </Formik>
         </AuthContent>
@@ -124,4 +141,32 @@ export default function ResetPassword() {
       </AuthBody>
     </AuthContainer>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  try {
+    const { token } = ctx.query
+    console.log('token', token)
+
+    const response = await axios.get(
+      `http://localhost:3000/api/auth/reset-password/${token}`
+    )
+
+    const email = response?.data?.data?.email
+
+    return {
+      props: {
+        email: email,
+
+        errorMessage: null,
+      },
+    }
+  } catch (error) {
+    return {
+      props: {
+        email: null,
+        errorMessage: 'Invalid or expired token',
+      },
+    }
+  }
 }

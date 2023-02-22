@@ -4,43 +4,72 @@ import Header from '../components/header'
 import Image from 'next/image'
 import { FaStore } from 'react-icons/fa'
 import { MdShoppingCart } from 'react-icons/md'
+import SuccessHandler from 'utils/SuccessHandler'
+import ErrorHandler from 'utils/ErrorHandler'
+import PrelaunchValidation from 'utils/validation/prelaunchValidation'
+import { useFormik } from 'formik'
+import Input from 'components/Input'
 
 export default function Prelaunch() {
-  const url = 'http://localhost:4000/bamzi/reservation'
-  const [name, setName] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
-  const [industry, setIndustry] = useState<string>('')
-  const [designation, setDesignation] = useState<string>('')
+  const url = 'http://localhost:3000/bamzi/reservation'
+
   const [buyerCols, setBuyerCols] = useState<string>(
-    'bg-transparent text-gray-500'
-  )
-  const [sellerCols, setSellerCols] = useState<string>(
     'bg-lightorange text-white'
   )
+  const [sellerCols, setSellerCols] = useState<string>(
+    'bg-transparent text-gray-500'
+  )
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log({
-      name: name,
-      email: email,
-      industry: industry,
-      designation: designation,
-    })
-    // axios
-    //   .post(url, {
-    //     name: name,
-    //     email: email,
-    //     industry: industry,
-    //     designation: designation,
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //   });
-    setName('')
-    setEmail('')
-    setIndustry('')
-    setDesignation('')
+  const initialValues = {
+    name: '',
+    email: '',
+    industry: '',
+    designation: 'Buyer',
   }
+
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: PrelaunchValidation,
+    validateOnChange: true,
+    validateOnBlur: true,
+    onSubmit: async (values, { resetForm }) => {
+      const { name, email, industry, designation } = values
+
+      console.log({ name, email, industry, designation })
+
+      try {
+        const reservationBooking = await axios.post('/api/reservation', {
+          name: name,
+          email: email,
+          industry: industry,
+          designation: designation,
+        })
+
+        if (reservationBooking) {
+          SuccessHandler({
+            message: reservationBooking?.data?.message ?? 'Reservation Sent',
+          })
+        }
+
+        resetForm()
+      } catch (error: any) {
+        ErrorHandler({
+          message: error?.response?.data?.message ?? 'Error Updating Password',
+        })
+        console.log('changePassword error', error)
+      }
+    },
+  })
+
+  const {
+    handleSubmit,
+    handleBlur,
+    handleChange,
+    values,
+    touched,
+    errors,
+    setFieldValue,
+  } = formik
 
   return (
     <div className={'my-0 mx-auto w-full bg-bluelight'}>
@@ -70,43 +99,66 @@ export default function Prelaunch() {
 
           <form
             className={'mt-8 w-full py-0 lg:w-11/12'}
-            onSubmit={(e) => handleSubmit(e)}
+            onSubmit={handleSubmit}
           >
-            <input
-              className={
-                'min-h-7 my-2 mx-0 w-full rounded-3xl border-none py-3 px-4 outline-none'
-              }
+            <Input
               type="text"
+              name="name"
               id="name"
-              value={name}
+              value={values['name']}
+              autoComplete="off"
+              className={
+                'min-h-7 my-2 mx-0 w-full rounded-3xl border border-white py-3 px-4'
+              }
               placeholder="Full Name"
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors}
+              touched={touched}
             />
 
-            <div className={'flex w-full flex-row justify-between space-x-4'}>
-              <input
-                type="text"
-                id="email"
-                value={email}
-                className={' my-2 w-1/2 rounded-3xl px-4 py-3 sm:w-2/3'}
-                placeholder="Email here"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <input
-                type="text"
-                id="industry"
-                value={industry}
-                className={'my-2 w-1/2 rounded-3xl px-4 py-3 sm:w-1/3'}
-                placeholder="Industry"
-                onChange={(e) => setIndustry(e.target.value)}
-              />
+            <div className={'flex w-full space-x-4'}>
+              <div className={'w-2/3'}>
+                <Input
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={values['email']}
+                  autoComplete="off"
+                  className={
+                    ' my-2 w-full rounded-3xl border border-white px-4 py-3'
+                  }
+                  placeholder="sample@example.com"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors}
+                  touched={touched}
+                />
+              </div>
+              <div className={'w-1/3'}>
+                <Input
+                  type="text"
+                  id="industry"
+                  name="industry"
+                  value={values['industry']}
+                  autoComplete="off"
+                  className={
+                    'my-2 w-full rounded-3xl border border-white px-4 py-3'
+                  }
+                  placeholder="Oil & Gas"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={errors}
+                  touched={touched}
+                />
+              </div>
             </div>
 
             <div className={'my-2 mx-0 grid grid-cols-2 gap-1.5'}>
               <div
-                className={`${buyerCols} flex cursor-pointer items-center justify-center space-x-4 rounded-3xl border-2 border-lightorange bg-transparent py-2 px-0`}
+                className={`${buyerCols} flex cursor-pointer items-center justify-center space-x-4 rounded-3xl border-2 border-lightorange py-2 px-0`}
                 onClick={() => {
-                  setDesignation('Buyer')
+                  setFieldValue('designation', 'Buyer')
                   setBuyerCols('bg-lightorange text-white')
                   setSellerCols('bg-transparent text-gray-500')
                 }}
@@ -116,11 +168,9 @@ export default function Prelaunch() {
               <div
                 className={`${sellerCols} flex cursor-pointer items-center justify-center space-x-4 rounded-3xl border-2 border-lightorange py-2 px-0`}
                 onClick={() => {
-                  setDesignation('Seller')
+                  setFieldValue('designation', 'Seller')
                   setSellerCols('bg-lightorange text-white')
                   setBuyerCols('bg-transparent text-gray-500')
-                  console.log(designation)
-                  console.log(sellerCols)
                 }}
               >
                 <FaStore size={32} /> &nbsp; Seller
