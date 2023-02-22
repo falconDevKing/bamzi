@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, MouseEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebookSquare } from 'react-icons/fa'
@@ -50,21 +50,18 @@ export default function Login() {
       setPassword('')
       router.push('/dashboard')
     }
-    // axios
-    //   .post(url, {
-    //     email: email,
-    //     password: password,
-    //   })
-    //   .then((res) => {
-    //     console.log(res.data)
-    //     if (res.data.seller) {
-    //       router.push('/dashboard')
-    //     } else {
-    //       router.push('/sellers-store')
-    //     }
-    //     setEmail('')
-    //     setPassword('')
-    //   })
+  }
+
+  const loginGoogle = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    const googleResponse = await signIn('google')
+    console.log('googleResponse', googleResponse)
+  }
+
+  const loginFacebook = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    const facebookResponse = await signIn('facebook')
+    console.log('googleResponse', facebookResponse)
   }
 
   return (
@@ -88,13 +85,19 @@ export default function Login() {
             </Link>
           </div>
 
-          <button className="flex items-center justify-center space-x-3 rounded-lg border border-gray-100 bg-white py-2 text-white shadow-md">
+          <button
+            className="flex items-center justify-center space-x-3 rounded-lg border border-gray-100 bg-white py-2 text-white shadow-md"
+            onClick={(e) => loginGoogle(e)}
+          >
             <FcGoogle size={24} />
             <span className="font-semibold text-black">
               Sign In with Google
             </span>
           </button>
-          <button className="flex items-center justify-center space-x-3 rounded-lg bg-facebook py-2 text-white shadow-md">
+          <button
+            className="flex items-center justify-center space-x-3 rounded-lg bg-facebook py-2 text-white shadow-md"
+            onClick={(e) => loginFacebook(e)}
+          >
             <FaFacebookSquare size={24} />
             <span className="font-semibold">Sign In with Facebook</span>
           </button>

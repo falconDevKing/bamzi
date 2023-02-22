@@ -18,7 +18,6 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      required: true,
     },
     shippingAddress: {
       type: String,
@@ -29,6 +28,14 @@ const userSchema = new Schema(
     },
     dob: {
       type: String,
+      trim: true,
+    },
+    image: {
+      type: String,
+      trim: true,
+    },
+    provider: {
+      type: [String],
       trim: true,
     },
     gender: {
