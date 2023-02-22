@@ -188,3 +188,5 @@ export default function Orders() {
     </div>
   )
 }
+
+Orders.auth = true

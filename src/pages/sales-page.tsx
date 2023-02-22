@@ -119,3 +119,5 @@ export default function SalesPage() {
     </div>
   )
 }
+
+SalesPage.auth = true

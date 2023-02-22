@@ -1,7 +1,7 @@
-import mongoose from 'mongoose'
+import Mongoose from 'mongoose'
 
 const mongoUrl = process.env.MONGO_URL as string
 
-const connectMongo = async () => mongoose.connect(mongoUrl)
+export const ConnectMongo = async () => await Mongoose.connect(mongoUrl)
 
-export default connectMongo
+export const CloseConnection = async () => await Mongoose.connection.close()

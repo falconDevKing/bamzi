@@ -27,4 +27,6 @@ const WishList = () => {
   )
 }
 
+WishList.auth = true
+
 export default WishList

@@ -50,6 +50,7 @@ const customizeSchema = new Schema(
   { timestamps: true }
 )
 
-const Customize = Mongoose.model('Customize', customizeSchema)
+const Customize =
+  Mongoose.models.Customize || Mongoose.model('Customize', customizeSchema)
 
 export default Customize

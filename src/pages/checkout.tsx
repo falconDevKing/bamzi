@@ -266,3 +266,5 @@ export default function Checkout() {
     </div>
   )
 }
+
+Checkout.auth = true

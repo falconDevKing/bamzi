@@ -24,6 +24,8 @@ const reservationSchema = new Schema(
   { timestamps: true }
 )
 
-const Reservation = Mongoose.model('Reservation', reservationSchema)
+const Reservation =
+  Mongoose.models.Reservation ||
+  Mongoose.model('Reservation', reservationSchema)
 
 export default Reservation

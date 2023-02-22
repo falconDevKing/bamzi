@@ -13,11 +13,18 @@ import {
 import { IoIosHeartEmpty, IoIosCart, IoIosHeart } from 'react-icons/io'
 import axios from 'axios'
 import Image from 'next/image'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 export default function SellersStore() {
   const [tab, setTab] = useState(0)
   const [products, setProducts] = useState<any[]>([])
   const [showModal, setShowModal] = useState<boolean>(false)
+
+  const { data: session, status } = useSession({ required: true })
+
+  if (status === 'loading') {
+    return <p>Loading...</p>
+  }
 
   const userID = '6234d264df9d2322e00785ef'
 
@@ -210,3 +217,5 @@ export default function SellersStore() {
     </div>
   )
 }
+
+SellersStore.auth = true

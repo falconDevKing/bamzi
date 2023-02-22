@@ -28,4 +28,6 @@ const ShoppingCart = () => {
   )
 }
 
+ShoppingCart.auth = true
+
 export default ShoppingCart

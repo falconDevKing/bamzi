@@ -202,3 +202,5 @@ export default function CustomiseShop() {
     </div>
   )
 }
+
+CustomiseShop.auth = true

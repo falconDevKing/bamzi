@@ -7,9 +7,13 @@ import { MdNotificationsActive, MdInfoOutline } from 'react-icons/md'
 import { tickets, latestSales } from '../utils/data'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 export default function SellersDashboard() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false)
+
+  // const { data: session } = useSession()
+  // console.log({ session })
 
   return (
     <div className="relative min-h-screen font-poppins  lg:grid lg:grid-cols-6">
@@ -170,3 +174,5 @@ export default function SellersDashboard() {
     </div>
   )
 }
+
+SellersDashboard.auth = true

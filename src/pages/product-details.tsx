@@ -104,7 +104,7 @@ export default function ProductDetails() {
                       </div>
                     ))}
                   </div>
-                  <div className="flex h-[28rem] w-[28rem] basis-4/6 justify-center self-center self-center p-8">
+                  <div className="flex h-[28rem] w-[28rem] basis-4/6 justify-center self-center p-8">
                     <Image src={product.views[index]} className="" alt="" />
                   </div>
                 </div>
@@ -227,3 +227,5 @@ export default function ProductDetails() {
     </div>
   )
 }
+
+ProductDetails.auth = true

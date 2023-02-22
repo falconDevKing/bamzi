@@ -1,11 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import { useRouter } from 'next/router'
 import User from 'models/User'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import sgMail from '@sendgrid/mail'
 import { error, Success } from 'utils/response'
-import { authOptions } from 'pages/api/auth/[...nextauth]'
-import { getServerSession } from 'next-auth/next'
 
 type Data = {
   status: number
@@ -18,25 +17,33 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  if (req.method === 'POST') {
+  const router = useRouter()
+  const { userId } = router.query
+
+  const { name, phoneNumber, dob, gender, password } = req.body
+
+  if (req.method === 'PUT') {
     try {
-      const session = await getServerSession(req, res, authOptions)
-      if (!session) {
-        const errorResponse = error(401, {}, 'Unauthenticated User')
-        return res.status(errorResponse.status).json(errorResponse)
+      let updatedData = {
+        name,
+        phoneNumber,
+        dob,
+        gender,
+        password,
       }
 
-      let userID = req.body.userID
-      const deletedUser = await User.findByIdAndRemove(userID)
+      const updatedUser = await User.findByIdAndUpdate(userId, {
+        $set: updatedData,
+      })
 
       const successResponse = Success(
-        201,
-        deletedUser,
-        'User deleted successfully!'
+        200,
+        updatedUser,
+        'User details updated successfully!'
       )
       return res.status(successResponse.status).json(successResponse)
     } catch (err) {
-      const errorResponse = error(500, err, 'Error deleting user')
+      const errorResponse = error(500, err, 'Error updating user ')
       return res.status(errorResponse.status).json(errorResponse)
     }
   }
