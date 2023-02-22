@@ -44,14 +44,14 @@ const Sidebar = ({ showSidebar, page }: SidebarProps) => {
       <div className="flex items-center justify-between">
         <Link href="/">
           <Image
-            src={require('../assets/BAMZI.png')}
+            src={require('assets/BAMZI.png')}
             alt="bamzi"
             width={108}
             height={60}
           />
         </Link>
         {/* <Image
-          src={require("../assets/avatar-1.jpg")}
+          src={require("assets/avatar-1.jpg")}
           alt="avatar"
           className="w-8 rounded-full lg:hidden"
           onClick={() => router.push("/customise-shop")}
@@ -62,7 +62,7 @@ const Sidebar = ({ showSidebar, page }: SidebarProps) => {
       </span>
 
       <div className="flex flex-col space-y-2">
-        <Link href="/dashboard" className={LinkReset}>
+        <Link href="/seller/dashboard" className={LinkReset}>
           <span className={page === 'dashboard' ? currentPage : regularPage}>
             <FiHome className="mr-4" /> Dashboard
           </span>
@@ -72,7 +72,7 @@ const Sidebar = ({ showSidebar, page }: SidebarProps) => {
           <FiCircle className="mr-4" /> Analytics
         </span>
 
-        <Link href="/marketing" className={LinkReset}>
+        <Link href="/seller/marketing" className={LinkReset}>
           <span className={page === 'marketing' ? currentPage : regularPage}>
             <FiCircle className="mr-4" /> Marketing
           </span>
@@ -82,13 +82,13 @@ const Sidebar = ({ showSidebar, page }: SidebarProps) => {
       <div className="flex flex-col space-y-2">
         <h3 className="font-semibold">PRODUCTS</h3>
 
-        <Link href="/sales-page" className={LinkReset}>
+        <Link href="/seller/sales-page" className={LinkReset}>
           <span className={page === 'sales-page' ? currentPage : regularPage}>
             <FiShoppingCart className="mr-2" /> Sales
           </span>
         </Link>
 
-        <Link href="/sellers-board" className={LinkReset}>
+        <Link href="/seller/sellers-board" className={LinkReset}>
           <span
             className={page === 'sellers-board' ? currentPage : regularPage}
           >
@@ -104,7 +104,7 @@ const Sidebar = ({ showSidebar, page }: SidebarProps) => {
       <div className="flex flex-col space-y-2">
         <h3 className="font-semibold">TRANSACTIONS</h3>
 
-        <Link href="/sales-history" className={LinkReset}>
+        <Link href="/seller/sales-history" className={LinkReset}>
           <span
             className={page === 'sales-history' ? currentPage : regularPage}
           >
@@ -124,7 +124,7 @@ const Sidebar = ({ showSidebar, page }: SidebarProps) => {
           <FiUser className="mr-2" /> Account
         </span>
 
-        <Link href="/customise-shop" className={LinkReset}>
+        <Link href="/seller/customise-shop" className={LinkReset}>
           <span
             className={page === 'customise-shop' ? currentPage : regularPage}
           >

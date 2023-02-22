@@ -16,15 +16,15 @@ export default function ProductDetails() {
       price: 399,
 
       views: [
-        require('../assets/apple-watch-img01.png'),
-        require('../assets/apple-phone-img01.png'),
-        require('../assets/apple-pods-img01.png'),
+        require('assets/apple-watch-img01.png'),
+        require('assets/apple-phone-img01.png'),
+        require('assets/apple-pods-img01.png'),
       ],
       variants: {
         src: [
-          require('../assets/apple-watch-img01.png'),
-          require('../assets/apple-watch-img02.png'),
-          require('../assets/apple-watch-img03.png'),
+          require('assets/apple-watch-img01.png'),
+          require('assets/apple-watch-img02.png'),
+          require('assets/apple-watch-img03.png'),
         ],
         colors: ['grey', 'red', 'blue'],
       },
@@ -38,19 +38,19 @@ export default function ProductDetails() {
       description: {
         content:
           'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam adipisci rerum voluptate veniam ut perferendis laudantium vero perspiciatis blanditiis! Doloribus est fugiat veritatis quisquam dicta.',
-        image: require('../assets/apple-watch-desc.jpg'),
+        image: require('assets/apple-watch-desc.jpg'),
       },
       reviews: [
         {
           name: 'John Barnes',
-          avatar: require('../assets/avatar-1.jpg'),
+          avatar: require('assets/avatar-1.jpg'),
           content: "I'm happy with the product.",
           date: '13/02/2021',
           rating: 4,
         },
         {
           name: 'David Stone',
-          avatar: require('../assets/avatar-1.jpg'),
+          avatar: require('assets/avatar-1.jpg'),
           content:
             "I've been using this product for a while now and it hasn't given me any issues.",
           date: '13/02/2021',
@@ -58,7 +58,7 @@ export default function ProductDetails() {
         },
         {
           name: 'Mira Long',
-          avatar: require('../assets/avatar-1.jpg'),
+          avatar: require('assets/avatar-1.jpg'),
           content:
             'Quality product. I recommend this for any lover of this brand.',
           date: '13/02/2021',

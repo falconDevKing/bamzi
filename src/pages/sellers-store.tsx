@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Filter from '../components/filter'
-import Footer from '../components/footer'
-import Header from '../components/header'
-import Card from '../components/card'
+import Filter from 'components/filter'
+import Footer from 'components/footer'
+import Header from 'components/header'
+import Card from 'components/card'
 import {
   FiAlignLeft,
   FiGrid,
@@ -68,7 +68,7 @@ export default function SellersStore() {
         <div className="flex flex-col space-y-4 px-6 md:flex-row md:items-center md:space-x-4 md:px-24">
           <div className="h-24 w-32 md:h-36 md:w-48 ">
             <Image
-              src={require('../assets/fashion-img01.png')}
+              src={require('assets/fashion-img01.png')}
               alt=""
               className="rounded-lg object-cover"
             />

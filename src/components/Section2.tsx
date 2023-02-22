@@ -1,8 +1,8 @@
-import image5 from '../assets/Group 11581.png'
-import image6 from '../assets/day78-wallet.png'
-import image7 from '../assets/day77-pocket-knief.png'
-import image8 from '../assets/day80-tea.png'
-import image9 from '../assets/M2-image2.png'
+import image5 from 'assets/Group 11581.png'
+import image6 from 'assets/day78-wallet.png'
+import image7 from 'assets/day77-pocket-knief.png'
+import image8 from 'assets/day80-tea.png'
+import image9 from 'assets/M2-image2.png'
 import Image from 'next/image'
 import { BsArrowRight } from 'react-icons/bs'
 

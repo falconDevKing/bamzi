@@ -32,7 +32,7 @@ const SellersHeader = ({ setShowSidebar, showSidebar }: SellersHeaderProps) => {
       </div>
       <div
         className="hidden cursor-pointer items-center space-x-4 lg:flex"
-        onClick={() => router.push('/customise-shop')}
+        onClick={() => router.push('/seller/customise-shop')}
       >
         <div className="flex items-center">
           <FaStoreAlt className="mr-2" /> Evans Bex Electronics Store
@@ -40,7 +40,7 @@ const SellersHeader = ({ setShowSidebar, showSidebar }: SellersHeaderProps) => {
 
         <div className="flex items-center">
           <Image
-            src={require('../assets/avatar-1.jpg')}
+            src={require('assets/avatar-1.jpg')}
             alt="avatar"
             width={40}
             height={40}

@@ -31,7 +31,7 @@ export default function Errorpage() {
 
             <div className={'flex items-start justify-center text-[#f6da8b]'}>
               <Image
-                src={require('../assets/Cart404.png')}
+                src={require('assets/Cart404.png')}
                 className={'w-[320px] sm:w-[400px]'}
                 alt=""
               />

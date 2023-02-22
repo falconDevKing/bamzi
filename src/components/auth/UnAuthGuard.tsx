@@ -8,9 +8,9 @@ const UnAuthGuard = ({ children }: PropsWithChildren) => {
     return <p>Loading...</p>
   }
 
-  // if (status === 'authenticated') {
-  //   signOut({ redirect: false })
-  // }
+  if (status === 'authenticated') {
+    signOut({ redirect: false })
+  }
 
   return <>{children}</>
 }

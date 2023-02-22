@@ -23,12 +23,12 @@ import {
   colors,
   ram,
   sizes,
-} from '../utils/data'
-import Card from '../components/card'
-import Pagination from '../components/pagination'
-import Sidebar from '../components/sidebar'
-import Filter from '../components/filter'
-import SellersHeader from '../components/SellersHeader'
+} from 'utils/data'
+import Card from 'components/card'
+import Pagination from 'components/pagination'
+import Sidebar from 'components/sidebar'
+import Filter from 'components/filter'
+import SellersHeader from 'components/SellersHeader'
 import axios from 'axios'
 
 export default function SellersBoard() {

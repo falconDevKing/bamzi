@@ -1,17 +1,17 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react'
+import Image from 'next/image'
 
 const AuthCart = () => {
   return (
-    <div className="xl:w-1/2 lg:w-2/5 xl:h-[72vh] lg:h-[50vh] h-[40vh] lg:mt-[100px] xl:mt-0 bg-primary rounded-r-2xl relative">
+    <div className="relative h-[40vh] rounded-r-2xl bg-primary lg:mt-[100px] lg:h-[50vh] lg:w-2/5 xl:mt-0 xl:h-[72vh] xl:w-1/2">
       <Image
-        src={require("../../assets/home-image.jpg")}
+        src={require('assets/home-image.jpg')}
         alt=""
-        className="-mt-4 mx-auto lg:rounded-lg lg:h-[20%] lg:w-auto h-[30vh] sm:h-[60vh] w-full object-cover object-center"
+        className="mx-auto -mt-4 h-[30vh] w-full object-cover object-center sm:h-[60vh] lg:h-[20%] lg:w-auto lg:rounded-lg"
         layout="fill"
       />
     </div>
-  );
-};
+  )
+}
 
-export default AuthCart;
+export default AuthCart

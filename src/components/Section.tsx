@@ -1,4 +1,4 @@
-import image3 from '../assets/Mask.png'
+import image3 from 'assets/Mask.png'
 import Image from 'next/image'
 
 const Section = () => {

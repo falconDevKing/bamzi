@@ -145,7 +145,7 @@ export default function Checkout() {
               >
                 <div>
                   <Image
-                    src={require('../assets/D4a-image9.png')}
+                    src={require('assets/D4a-image9.png')}
                     width={'60'}
                     height={'60'}
                     alt=""
@@ -153,7 +153,7 @@ export default function Checkout() {
                 </div>
                 <div>
                   <Image
-                    src={require('../assets/M2-image10.png')}
+                    src={require('assets/M2-image10.png')}
                     width={'60'}
                     height={'60'}
                     alt=""
@@ -161,7 +161,7 @@ export default function Checkout() {
                 </div>
                 <div>
                   <Image
-                    src={require('../assets/GooglePay.png')}
+                    src={require('assets/GooglePay.png')}
                     width={'60'}
                     height={'60'}
                     alt=""
